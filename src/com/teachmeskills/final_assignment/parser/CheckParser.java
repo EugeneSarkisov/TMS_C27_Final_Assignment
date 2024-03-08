@@ -1,6 +1,8 @@
 package com.teachmeskills.final_assignment.parser;
 
 
+import com.teachmeskills.final_assignment.validator.Validator;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -11,16 +13,12 @@ import java.util.List;
 
 
 public class CheckParser {
-    public static void parseCheckInfo() {
-        //TODO validationMethod
-        sortChecks();
-        parseInfo();
+    public static void parseCheckInfo(File file) {
+        parseInfo(sortChecks(Validator.folderValidator(file)));
     }
-
-    private static List<File> sortChecks() {
+    private static List<File> sortChecks(File file) {
         //remove all unnecessary files
-        File checkFolder = new File("data/checks");
-        List<File> checks = new ArrayList<>(List.of(checkFolder.listFiles()));
+        List<File> checks = new ArrayList<>(List.of(file.listFiles()));
         Iterator<File> checkIter = checks.iterator();
         while (checkIter.hasNext()) {
             File check = checkIter.next();
@@ -39,11 +37,10 @@ public class CheckParser {
         }
         return checks;
     }
-
-    private static void parseInfo() {
+    private static void parseInfo(List<File> checkList) {
         //parsing check info
         List<String> billList = new ArrayList<>();
-        for (File check : sortChecks()) {
+        for (File check : checkList) {
             try (BufferedReader checkReader = new BufferedReader(new FileReader(check))) {
                 String line;
                 while ((line = checkReader.readLine()) != null) {
