@@ -1,7 +1,8 @@
 package com.teachmeskills.final_assignment.validator;
 
-import com.teachmeskills.final_assignment.custom_exceptions.IsFolderNotExistException;
+import com.teachmeskills.final_assignment.custom_exceptions.IsFolderExistException;
 import com.teachmeskills.final_assignment.custom_exceptions.IsDirectoryEmptyException;
+import com.teachmeskills.final_assignment.custom_exceptions.IsFolderNotExistException;
 import com.teachmeskills.final_assignment.util.logger.Logger;
 import com.teachmeskills.final_assignment.validator.validations.DirectoryValidation;
 
