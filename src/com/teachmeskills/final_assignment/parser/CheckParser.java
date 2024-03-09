@@ -16,11 +16,25 @@ import static com.teachmeskills.final_assignment.util.consts.path.Path.PATH_TO_G
 import static com.teachmeskills.final_assignment.util.consts.regex.Regex.CHECK_REGEX;
 import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMessages.*;
 
-
+/**
+ * Parse ChecksFiles and get the sum of bills of all documents.
+ * Allow to verification necessary files and remove garbage order
+ * files to garbage package: data/temp/garbageChecks.
+ *
+ * @author EugeneSarkisov
+ */
 public class CheckParser {
     public static void parseCheckInfo(File file) {
         parseInfo(sortChecks(file));
     }
+
+    /**
+     * Collect all files from Check package into collection "checks" and
+     * sorting it while collection isn't empty. Garbage checks moving to
+     * the temp/garbageChecks. Return the sort collection of orders.
+     * @param file all order files from package
+     * @return checks
+     */
     private static List<File> sortChecks(File file) {
         //remove all unnecessary files
         Logger.loggerWrite(ACCESS_CHECK_FOLDER_MESSAGE);
@@ -49,16 +63,23 @@ public class CheckParser {
         Logger.loggerWrite(REMOVING_COMPLETE_MESSAGE);
         return checks;
     }
+    /**
+     * Parses sorted documents with for-loop and FileReader. Verification of
+     * bill string happening when reader find string with key-word "Total".
+     * Next, all strings collect in orderBillList, from every string we get
+     * value of order and summing it in orderSum.
+     * @param checkList get the sort collection from sortChecks method.
+     */
     private static void parseInfo(List<File> checkList) {
         //parsing check info
         Logger.loggerWrite(PARSING_CHECK_INFO_MESSAGE);
-        List<String> billList = new ArrayList<>();
+        List<String> billCheckList = new ArrayList<>();
         for (File check : checkList) {
             try (BufferedReader checkReader = new BufferedReader(new FileReader(check))) {
                 String line;
                 while ((line = checkReader.readLine()) != null) {
                     if (line.startsWith("Bill")) {
-                        billList.add(line);
+                        billCheckList.add(line);
                     }
                 }
             } catch (Exception e) {
@@ -70,7 +91,7 @@ public class CheckParser {
         Logger.loggerWrite(PARSING_CHECK_INFO_COMPLETE_MESSAGE);
         //summing all necessary bills
         double checkSum = 0.0;
-        for (String bill : billList) {
+        for (String bill : billCheckList) {
             //TODO currencyConvertor
             checkSum += Double.parseDouble(bill.substring(23).trim().replace(",", "."));
             System.out.println(checkSum);

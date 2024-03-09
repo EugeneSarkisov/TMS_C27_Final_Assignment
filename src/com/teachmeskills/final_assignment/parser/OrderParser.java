@@ -18,13 +18,28 @@ import static com.teachmeskills.final_assignment.util.consts.path.Path.PATH_TO_G
 import static com.teachmeskills.final_assignment.util.consts.regex.Regex.ORDER_REGEX;
 import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMessages.*;
 
+/**
+ * Parse OrderFiles and get the sum of bills of all documents.
+ * Allow to verification necessary files and remove garbage order
+ * files to garbage package: data/temp/garbageOrders.
+ *
+ * @author EugeneSarkisov
+ */
 public class OrderParser {
 
     public static void parseOrderInfo(File file){
-        parseOrderInfo(sortOrder(file));
+        parseOrderInfo(sortOrders(file));
     }
 
-    private static List<File> sortOrder(File file) {
+    /**
+     * Collect all files from Order package into collection "orders" and
+     * sorting it while collection isn't empty. Garbage orders moving to
+     * the temp/garbageOrders. Return the sort collection of orders.
+     * @param file all order files from package
+     * @return orders
+     */
+
+    private static List<File> sortOrders(File file) {
         //remove all unnecessary files
         Logger.loggerWrite(ACCESS_ORDER_FOLDER_MESSAGE);
         List<File> orders = new ArrayList<>(List.of(file.listFiles()));
@@ -52,6 +67,14 @@ public class OrderParser {
         Logger.loggerWrite(REMOVING_COMPLETE_MESSAGE);
         return orders;
     }
+
+    /**
+     * Parses sorted documents with for-loop and FileReader. Verification of
+     * bill string happening when reader find string with key-word "Total".
+     * Next, all strings collect in orderBillList, from every string we get
+     * value of order and summing it in orderSum.
+     * @param orderList get the sort collection from sortOrder method.
+     */
 
     private static void parseOrderInfo(List<File> orderList) {
         //parsing check info

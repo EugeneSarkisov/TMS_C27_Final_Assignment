@@ -1,6 +1,6 @@
 package com.teachmeskills.final_assignment.validator;
 
-import com.teachmeskills.final_assignment.custom_exceptions.IsFolderExistException;
+import com.teachmeskills.final_assignment.custom_exceptions.IsFolderNotExistException;
 import com.teachmeskills.final_assignment.custom_exceptions.IsDirectoryEmptyException;
 import com.teachmeskills.final_assignment.util.logger.Logger;
 import com.teachmeskills.final_assignment.validator.validations.DirectoryValidation;
@@ -18,7 +18,7 @@ public class Validator {
             DirectoryValidation.isFileExistsValidation(file);
             DirectoryValidation.isDirectoryEmptyValidation(file);
             Logger.loggerWrite("Validation complete");
-        } catch (IsFolderExistException e) {
+        } catch (IsFolderNotExistException e) {
             System.out.printf(e.getMessage());
             Logger.loggerWrite(e.getMessage() + CHECK_THE_ERROR_LOG_MESSAGE);
             Logger.loggerWriteError(e);
