@@ -1,8 +1,8 @@
-package com.teachmeskills.final_assignment.service;
+package com.teachmeskills.final_assignment.session.service;
 
-import com.teachmeskills.final_assignment.encoder.Encoder;
+import com.teachmeskills.final_assignment.util.encoder.Encoder;
 import com.teachmeskills.final_assignment.session.Session;
-import com.teachmeskills.final_assignment.storage.StorageMock;
+import com.teachmeskills.final_assignment.util.storage.StorageMock;
 
 public class AuthorizationService {
 

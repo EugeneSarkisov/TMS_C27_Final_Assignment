@@ -1,4 +1,4 @@
-package com.teachmeskills.final_assignment.storage;
+package com.teachmeskills.final_assignment.util.storage;
 
 public final class StorageMock {
 

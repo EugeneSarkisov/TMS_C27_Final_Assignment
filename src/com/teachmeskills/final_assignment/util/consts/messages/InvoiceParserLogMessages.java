@@ -1,0 +1,8 @@
+package com.teachmeskills.final_assignment.util.consts.messages;
+
+public interface InvoiceParserLogMessages {
+    String ACCESS_INVOICE_FOLDER_MESSAGE = "Getting access to the folder 'INVOICE'";
+    String REMOVING_GARBAGE_INVOICE_MESSAGE = "Removing all unnecessary files";
+    String PARSING_INVOICE_INFO_MESSAGE = "Parsing info from 'INVOICE'";
+    String PARSING_INVOICE_INFO_COMPLETE_MESSAGE = "Parsing complete. Summing all 'INVOICE' bills";
+}

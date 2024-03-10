@@ -1,8 +1,7 @@
 package com.teachmeskills.final_assignment.run;
 
-import com.teachmeskills.final_assignment.encoder.Encoder;
-import com.teachmeskills.final_assignment.service.AuthorizationService;
-import com.teachmeskills.final_assignment.service.FileProcessService;
+import com.teachmeskills.final_assignment.session.service.AuthorizationService;
+import com.teachmeskills.final_assignment.session.service.FileProcessService;
 import com.teachmeskills.final_assignment.session.Session;
 
 

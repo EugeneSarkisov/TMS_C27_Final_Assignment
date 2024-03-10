@@ -1,4 +1,4 @@
-package com.teachmeskills.final_assignment.encoder;
+package com.teachmeskills.final_assignment.util.encoder;
 
 import java.util.Base64;
 import java.util.Objects;
