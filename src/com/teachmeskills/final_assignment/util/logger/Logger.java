@@ -18,6 +18,7 @@ public class Logger {
             sb.append(" ---> ");
             sb.append(string);
             writer.write(sb.toString() + "\n");
+            System.out.println(sb.toString());
         } catch (IOException e) {
             System.out.println(SOMETHING_WENT_WRONG_MESSAGE);
         }
@@ -35,6 +36,7 @@ public class Logger {
             exp.printStackTrace(pw);
             sb.append(sw.toString());
             writer.write(sb.toString() + "\n");
+            System.out.println(sb.toString());
             sw.close();
             pw.close();
         } catch (IOException e) {

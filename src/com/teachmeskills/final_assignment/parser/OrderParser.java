@@ -1,5 +1,7 @@
 package com.teachmeskills.final_assignment.parser;
 
+import com.teachmeskills.final_assignment.custom_exceptions.ChecksFolderNotExistException;
+import com.teachmeskills.final_assignment.custom_exceptions.OrdersFolderNotExistException;
 import com.teachmeskills.final_assignment.util.logger.Logger;
 
 import java.io.BufferedReader;
@@ -10,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -28,7 +31,23 @@ import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMes
 public class OrderParser {
 
     public static void parseOrderInfo(File file){
-        parseOrderInfo(sortOrders(file));
+        try {
+            parseOrderInfo(sortOrders(findOrderFolder(file)));
+        } catch (OrdersFolderNotExistException e) {
+            Logger.loggerWriteError(e);
+            System.err.println(e.getMessage());
+        }
+    }
+    private static File findOrderFolder(File file) throws OrdersFolderNotExistException {
+        Logger.loggerWrite(CHECK_ORDER_FOLDER_MESSAGE);
+        List<File> dataFolders = Arrays.stream(file.listFiles())
+                .filter(n -> n.getName().equals("orders"))
+                .toList();
+        if (!dataFolders.isEmpty()) {
+            return dataFolders.get(0);
+        } else {
+            throw new OrdersFolderNotExistException("Orders folder doesn't exist");
+        }
     }
 
     /**
@@ -101,5 +120,6 @@ public class OrderParser {
             orderSum += Double.parseDouble(bill.substring(11).trim().replace(",", ""));
             System.out.println(orderSum);
         }
+        Logger.loggerWrite(TRANSFER_ORDER_INFO_MESSAGE);
     }
 }

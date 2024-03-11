@@ -1,8 +1,8 @@
 package com.teachmeskills.final_assignment.run;
 
-import com.teachmeskills.final_assignment.session.service.AuthorizationService;
-import com.teachmeskills.final_assignment.session.service.FileProcessService;
-import com.teachmeskills.final_assignment.session.Session;
+import com.teachmeskills.final_assignment.service.FileProcessService;
+
+import java.util.Scanner;
 
 
 public class Runner {
@@ -12,9 +12,10 @@ public class Runner {
 
 //        String input = "wajbbaievkMTIzNDVBQkM=";
 //        System.out.println(Encoder.decode(input));
-
-        Session session = AuthorizationService.authorization("qwerty", "12345ABC");
-        FileProcessService.doFileProcess(session, "path to folder");
+//      Session session = AuthorizationService.authorization("qwerty", "12345ABC");
+        Scanner scanner = new Scanner(System.in);
+        FileProcessService.startProcess(scanner.next(), scanner.next(), scanner.next());
+        scanner.close();
     }
 }
 

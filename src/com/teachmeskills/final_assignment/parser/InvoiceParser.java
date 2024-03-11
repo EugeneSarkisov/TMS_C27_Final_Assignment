@@ -1,5 +1,7 @@
 package com.teachmeskills.final_assignment.parser;
 
+import com.teachmeskills.final_assignment.custom_exceptions.ChecksFolderNotExistException;
+import com.teachmeskills.final_assignment.custom_exceptions.InvoicesFolderNotExistException;
 import com.teachmeskills.final_assignment.util.consts.messages.UserLogMessages;
 import com.teachmeskills.final_assignment.util.logger.Logger;
 
@@ -11,6 +13,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -22,9 +25,24 @@ import static com.teachmeskills.final_assignment.util.consts.regex.Regex.INVOICE
 
 public class InvoiceParser {
     public static void parseInvoiceInfo(File file) {
-        parseInvoiceInfo(sortInvoice(file));
+        try {
+            parseInvoiceInfo(sortInvoice(findInvoiceFolder(file)));
+        } catch (InvoicesFolderNotExistException e) {
+            Logger.loggerWriteError(e);
+            System.out.println(e.getMessage());
+        }
     }
-
+    private static File findInvoiceFolder(File file) throws InvoicesFolderNotExistException {
+        Logger.loggerWrite(CHECK_INVOICES_FOLDER_MESSAGE);
+        List<File> dataFolders = Arrays.stream(file.listFiles())
+                .filter(n -> n.getName().equals("invoices"))
+                .toList();
+        if (!dataFolders.isEmpty()) {
+            return dataFolders.get(0);
+        } else {
+            throw new InvoicesFolderNotExistException("Invoices folder doesn't exist");
+        }
+    }
     private static List<File> sortInvoice(File file) {
         Logger.loggerWrite(ACCESS_INVOICE_FOLDER_MESSAGE);
         List<File> invoices = new ArrayList<>(List.of(file.listFiles()));
@@ -72,8 +90,9 @@ public class InvoiceParser {
         Logger.loggerWrite(PARSING_INVOICE_INFO_COMPLETE_MESSAGE);
         double invoiceSum = 0.0;
         for (String bill : invoiceDocList) {
-            invoiceSum += Double.parseDouble(bill.substring(11).trim());
+            invoiceSum += Double.parseDouble(bill.replaceAll("[a-zA-Z$]", "").trim());
             System.out.println(invoiceSum);
         }
+        Logger.loggerWrite(TRANSFER_INVOICE_INFO_MESSAGE);
     }
 }

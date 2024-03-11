@@ -1,6 +1,7 @@
 package com.teachmeskills.final_assignment.parser;
 
 
+import com.teachmeskills.final_assignment.custom_exceptions.ChecksFolderNotExistException;
 import com.teachmeskills.final_assignment.util.logger.Logger;
 
 import java.io.*;
@@ -8,9 +9,11 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import static com.teachmeskills.final_assignment.util.consts.currency.Currency.EUR_TO_USD_EXCHANGE;
 import static com.teachmeskills.final_assignment.util.consts.messages.CheckParserLogMessages.*;
 import static com.teachmeskills.final_assignment.util.consts.path.Path.PATH_TO_GARBAGE_CHECKS;
 import static com.teachmeskills.final_assignment.util.consts.regex.Regex.CHECK_REGEX;
@@ -25,13 +28,30 @@ import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMes
  */
 public class CheckParser {
     public static void parseCheckInfo(File file) {
-        parseInfo(sortChecks(file));
+        try {
+            parseCheckInfo(sortChecks(findCheckFolder(file)));
+        } catch (ChecksFolderNotExistException e) {
+            Logger.loggerWriteError(e);
+            System.err.println(e.getMessage());
+        }
+    }
+    private static File findCheckFolder(File file) throws ChecksFolderNotExistException {
+        Logger.loggerWrite(CHECK_CHECKS_FOLDER_MESSAGE);
+        List<File> dataFolders = Arrays.stream(file.listFiles())
+                .filter(n -> n.getName().equals("checks"))
+                .toList();
+        if (!dataFolders.isEmpty()) {
+            return dataFolders.get(0);
+        } else {
+            throw new ChecksFolderNotExistException("Checks folder doesn't exist");
+        }
     }
 
     /**
      * Collect all files from Check package into collection "checks" and
      * sorting it while collection isn't empty. Garbage checks moving to
      * the temp/garbageChecks. Return the sort collection of orders.
+     *
      * @param file all order files from package
      * @return checks
      */
@@ -63,14 +83,16 @@ public class CheckParser {
         Logger.loggerWrite(REMOVING_COMPLETE_MESSAGE);
         return checks;
     }
+
     /**
      * Parses sorted documents with for-loop and FileReader. Verification of
      * bill string happening when reader find string with key-word "Total".
      * Next, all strings collect in orderBillList, from every string we get
      * value of order and summing it in orderSum.
+     *
      * @param checkList get the sort collection from sortChecks method.
      */
-    private static void parseInfo(List<File> checkList) {
+    private static void parseCheckInfo(List<File> checkList) {
         //parsing check info
         Logger.loggerWrite(PARSING_CHECK_INFO_MESSAGE);
         List<String> billCheckList = new ArrayList<>();
@@ -92,10 +114,12 @@ public class CheckParser {
         //summing all necessary bills
         double checkSum = 0.0;
         for (String bill : billCheckList) {
-            //TODO currencyConvertor
-            checkSum += Double.parseDouble(bill.substring(23).trim().replace(",", "."));
+            checkSum += EUR_TO_USD_EXCHANGE * Double.parseDouble(bill.substring(23).trim().
+                                                                 replace(",", "."));
             System.out.println(checkSum);
         }
+        Logger.loggerWrite(TRANSFER_CHECK_INFO_MESSAGE);
     }
 }
+
 
