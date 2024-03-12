@@ -1,5 +1,11 @@
 package com.teachmeskills.final_assignment.util.consts.path;
 
+/**
+ * Contain constants of path's to log folder and garbage folder;
+ *
+ * @author EugeneSarkisov, Kirill Palianitsa
+ */
+
 public interface Path {
     String PATH_TO_GARBAGE_CHECKS = "data/temp/garbageChecks/";
     String PATH_TO_GARBAGE_ORDERS = "data/temp/garbageOrders/";

@@ -15,6 +15,7 @@ import java.util.List;
 
 import static com.teachmeskills.final_assignment.util.consts.currency.Currency.EUR_TO_USD_EXCHANGE;
 import static com.teachmeskills.final_assignment.util.consts.messages.CheckParserLogMessages.*;
+import static com.teachmeskills.final_assignment.util.consts.path.Path.PATH_TO_GARBAGE_CHECKS;
 import static com.teachmeskills.final_assignment.util.consts.regex.Regex.CHECK_REGEX;
 import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMessages.*;
 
@@ -33,6 +34,15 @@ public class CheckParser {
             Logger.loggerWriteError(e);
         }
     }
+
+    /**
+     * findCheckFolder checks if folder checks exist or not. Validation happened with
+     * filtering files in package.
+     * @param file - get the file from validator;
+     * @return - if folder exist - return the file with package;
+     * @throws ChecksFolderNotExistException - if folder not exist;
+     */
+
     private static File findCheckFolder(File file) throws ChecksFolderNotExistException {
         Logger.loggerWrite(CHECK_CHECKS_FOLDER_MESSAGE);
         List<File> dataFolders = Arrays.stream(file.listFiles())
@@ -63,7 +73,7 @@ public class CheckParser {
             while (checkIter.hasNext()) {
                 File check = checkIter.next();
                 if (!check.getName().matches(CHECK_REGEX)) {
-                    FileMover.moveFile(check);
+                    FileMover.moveFile(check, PATH_TO_GARBAGE_CHECKS);
                     checkIter.remove();
                 }
             }
@@ -79,8 +89,8 @@ public class CheckParser {
      * bill string happening when reader find string with key-word "Total".
      * Next, all strings collect in orderBillList, from every string we get
      * value of order and summing it in orderSum.
-     *
      * @param checkList get the sort collection from sortChecks method.
+     * @return checkSum - all necessary bills summing together.
      */
     private static double parseCheckInfo(List<File> checkList) {
         //check is our collection empty

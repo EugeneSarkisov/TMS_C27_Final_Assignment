@@ -1,5 +1,11 @@
 package com.teachmeskills.final_assignment.util.consts.messages;
 
+/**
+ * Contain constants of default user log messages;
+ *
+ * @author EugeneSarkisov;
+ */
+
 public interface UserLogMessages {
     String ERROR_WHILE_MOVING_FILE_MESSAGE = "Error while moving file: ";
     String CHECK_THE_ERROR_LOG_MESSAGE = " Please, check the error_log";

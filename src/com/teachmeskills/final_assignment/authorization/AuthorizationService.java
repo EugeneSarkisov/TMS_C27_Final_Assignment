@@ -1,4 +1,5 @@
 package com.teachmeskills.final_assignment.authorization;
+//TODO write javadoc
 
 import com.teachmeskills.final_assignment.util.encoder.Encoder;
 import com.teachmeskills.final_assignment.util.storage.StorageMock;

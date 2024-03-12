@@ -1,5 +1,7 @@
 package com.teachmeskills.final_assignment.util.encoder;
 
+//TODO write javadoc
+
 import java.util.Base64;
 import java.util.Objects;
 import java.util.Random;

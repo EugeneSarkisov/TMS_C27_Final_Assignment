@@ -1,5 +1,11 @@
 package com.teachmeskills.final_assignment.util.consts.messages;
 
+/**
+ * Contain constants of log messages from order parser;
+ *
+ * @author EugeneSarkisov;
+ */
+
 public interface OrderParserLogMessages {
     String CHECK_ORDER_FOLDER_MESSAGE = "Checking 'ORDERS' folder...";
     String ACCESS_ORDER_FOLDER_MESSAGE = "Getting access to the folder 'ORDERS'";

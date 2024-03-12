@@ -1,7 +1,7 @@
 package com.teachmeskills.final_assignment.custom_exceptions;
 
 /**
- * Class IsFolderExistException contain a pattern of exception for folder which not exist.f
+ * Class IsFolderExistException contain a pattern of exception for folder which not exist.
  * @author EugeneSarkisov
  */
 

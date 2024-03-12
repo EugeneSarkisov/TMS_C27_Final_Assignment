@@ -1,5 +1,11 @@
 package com.teachmeskills.final_assignment.util.logger;
 
+/**
+ * Uses for collecting and writing logs about runtime process.
+ *
+ * @author EugeneSarkisov
+ */
+
 import com.teachmeskills.final_assignment.util.date_sample.DateAndTime;
 
 import java.io.*;
@@ -9,6 +15,13 @@ import static com.teachmeskills.final_assignment.util.consts.path.Path.PATH_TO_E
 import static com.teachmeskills.final_assignment.util.consts.path.Path.PATH_TO_LOG;
 
 public class Logger {
+
+    /**
+     * loggerWrite writing user logs in runtime and showing this info in console.
+     * All logs contain in log/log.txt
+     * @param string - contain message which we need to write in logs.
+     */
+
     public static void loggerWrite(String string) {
         File logFile = new File(PATH_TO_LOG);
         try (Writer writer = new FileWriter(logFile, true)) {
@@ -24,6 +37,13 @@ public class Logger {
         }
     }
         //TODO date with logs
+
+    /**
+     * loggerWriteError writing error logs in runtime and showing this info in console.
+     * All logs contain in log/error_log.txt
+     * @param exp - contain exception and get exception message which we need to write in logs.
+     */
+
     public static void loggerWriteError(Exception exp) {
         File logFile = new File(PATH_TO_ERROR_LOG);
         try (Writer writer = new FileWriter(logFile, true)) {

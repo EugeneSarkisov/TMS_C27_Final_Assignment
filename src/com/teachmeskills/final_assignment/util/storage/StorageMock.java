@@ -1,5 +1,7 @@
 package com.teachmeskills.final_assignment.util.storage;
 
+//TODO write javadoc
+
 public final class StorageMock {
 
     private final String login = "z9r669g68rcXdlcnR5";

@@ -1,5 +1,6 @@
 package com.teachmeskills.final_assignment.parser.parsers;
 
+import com.teachmeskills.final_assignment.custom_exceptions.ChecksFolderNotExistException;
 import com.teachmeskills.final_assignment.custom_exceptions.InvoicesFolderNotExistException;
 import com.teachmeskills.final_assignment.custom_exceptions.IsDirectoryEmptyException;
 import com.teachmeskills.final_assignment.util.mover.FileMover;
@@ -17,7 +18,16 @@ import java.util.List;
 import static com.teachmeskills.final_assignment.util.consts.messages.InvoiceParserLogMessages.*;
 import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMessages.*;
 import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMessages.CHECK_THE_ERROR_LOG_MESSAGE;
+import static com.teachmeskills.final_assignment.util.consts.path.Path.PATH_TO_GARBAGE_INVOICES;
 import static com.teachmeskills.final_assignment.util.consts.regex.Regex.INVOICE_REGEX;
+
+/**
+ * Parse InvoiceFiles and get the sum of bills of all documents.
+ * Allow to verification necessary files and remove garbage invoice
+ * files to garbage package: data/temp/garbageInvoices.
+ *
+ * @author Kirril Palianitsa
+ */
 
 public class InvoiceParser {
     public static void parseInvoiceInfo(File file) {
@@ -27,6 +37,13 @@ public class InvoiceParser {
             Logger.loggerWriteError(e);
         }
     }
+    /**
+     * findInvoiceFolder checks if folder invoices exist or not. Validation happened with
+     * filtering files in package.
+     * @param file - get the file from validator;
+     * @return - if folder exist - return the file with package;
+     * @throws InvoicesFolderNotExistException - if folder not exist;
+     */
     private static File findInvoiceFolder(File file) throws InvoicesFolderNotExistException {
         Logger.loggerWrite(CHECK_INVOICES_FOLDER_MESSAGE);
         List<File> dataFolders = Arrays.stream(file.listFiles())
@@ -38,6 +55,15 @@ public class InvoiceParser {
             throw new InvoicesFolderNotExistException("Invoices folder doesn't exist");
         }
     }
+
+    /**
+     * Collect all files from Invoices package into collection "invoices" and
+     * sorting it while collection isn't empty. Garbage invoices moving to
+     * the temp/garbageInvoices. Return the sort collection of invoices.
+     * @param file all invoice files from package
+     * @return invoices
+     */
+
     private static List<File> sortInvoice(File file) {
         List<File> invoices = new ArrayList<>(List.of(file.listFiles()));
         try {
@@ -48,7 +74,7 @@ public class InvoiceParser {
             while (invoiceIter.hasNext()) {
                 File invoice = invoiceIter.next();
                 if (!invoice.getName().matches(INVOICE_REGEX)) {
-                    FileMover.moveFile(invoice);
+                    FileMover.moveFile(invoice, PATH_TO_GARBAGE_INVOICES);
                     invoiceIter.remove();
                 }
             }
@@ -57,6 +83,15 @@ public class InvoiceParser {
         }
         return invoices;
     }
+
+    /**
+     * Parses sorted documents with for-loop and FileReader. Verification of
+     * bill string happening when reader find string with key-word "Total".
+     * Next, all strings collect in invoiceDocList, from every string we get
+     * value of order and summing it in invoiceSum.
+     * @param invoiceList get the sort collection from sortOrder method.
+     * @return invoiceSum - all necessary bills summing together.
+     */
 
     private static double parseInvoiceInfo(List<File> invoiceList) {
         //check is our collection empty

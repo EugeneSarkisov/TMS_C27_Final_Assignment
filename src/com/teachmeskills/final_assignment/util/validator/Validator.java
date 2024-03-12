@@ -12,8 +12,21 @@ import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMes
 import static com.teachmeskills.final_assignment.util.consts.messages.ValidatorMessages.END_VALIDATION;
 import static com.teachmeskills.final_assignment.util.consts.messages.ValidatorMessages.START_VALIDATION;
 
-
+/**
+ * Contain method which uses for folder validation.
+ * Throws IsFolderExistException, IsDirectoryEmptyException.
+ *
+ * @author EugeneSarkisov
+ */
 public class Validator {
+
+    /**
+     * Checking if folder empty or not exist. Get the methods from DirectoryValidation
+     * class. All steps write in user log file.
+     * @param file - file from user path.
+     * @return - true if folder exist and not empty.
+     */
+
     public static boolean folderValidator(File file) {
         try {
             Logger.loggerWrite(START_VALIDATION);

@@ -41,6 +41,15 @@ public class OrderParser {
             Logger.loggerWriteError(e);
         }
     }
+
+    /**
+     * findOrderFolder checks if folder orders exist or not. Validation happened with
+     * filtering files in package.
+     * @param file - get the file from validator;
+     * @return - if folder exist - return the file with package;
+     * @throws OrdersFolderNotExistException - if folder not exist;
+     */
+
     private static File findOrderFolder(File file) throws OrdersFolderNotExistException {
         Logger.loggerWrite(CHECK_ORDER_FOLDER_MESSAGE);
         List<File> dataFolders = Arrays.stream(file.listFiles())
@@ -72,7 +81,7 @@ public class OrderParser {
             while (orderIter.hasNext()) {
                 File order = orderIter.next();
                 if (!order.getName().toLowerCase().matches(ORDER_REGEX)) {
-                    FileMover.moveFile(order);
+                    FileMover.moveFile(order, PATH_TO_GARBAGE_ORDERS);
                     orderIter.remove();
                 }
             }
@@ -89,6 +98,7 @@ public class OrderParser {
      * Next, all strings collect in orderBillList, from every string we get
      * value of order and summing it in orderSum.
      * @param orderList get the sort collection from sortOrder method.
+     * @return orderSum - all necessary bills summing together.
      */
 
     private static double parseOrderInfo(List<File> orderList) {

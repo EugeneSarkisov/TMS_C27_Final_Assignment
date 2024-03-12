@@ -1,5 +1,11 @@
 package com.teachmeskills.final_assignment.util.consts.messages;
 
+/**
+ * Contain constants of log messages from check parser;
+ *
+ * @author EugeneSarkisov
+ */
+
 public interface CheckParserLogMessages {
     String CHECK_CHECKS_FOLDER_MESSAGE = "Checking 'CHECKS' folder...";
     String ACCESS_CHECK_FOLDER_MESSAGE = "Getting access to the folder 'CHECKS'";
