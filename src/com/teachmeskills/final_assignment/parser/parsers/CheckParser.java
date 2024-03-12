@@ -1,13 +1,13 @@
-package com.teachmeskills.final_assignment.parser;
+package com.teachmeskills.final_assignment.parser.parsers;
 
 
 import com.teachmeskills.final_assignment.custom_exceptions.ChecksFolderNotExistException;
+import com.teachmeskills.final_assignment.custom_exceptions.IsDirectoryEmptyException;
+import com.teachmeskills.final_assignment.util.mover.FileMover;
 import com.teachmeskills.final_assignment.util.logger.Logger;
+import com.teachmeskills.final_assignment.util.validator.validations.DirectoryValidation;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -15,7 +15,6 @@ import java.util.List;
 
 import static com.teachmeskills.final_assignment.util.consts.currency.Currency.EUR_TO_USD_EXCHANGE;
 import static com.teachmeskills.final_assignment.util.consts.messages.CheckParserLogMessages.*;
-import static com.teachmeskills.final_assignment.util.consts.path.Path.PATH_TO_GARBAGE_CHECKS;
 import static com.teachmeskills.final_assignment.util.consts.regex.Regex.CHECK_REGEX;
 import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMessages.*;
 
@@ -32,7 +31,6 @@ public class CheckParser {
             parseCheckInfo(sortChecks(findCheckFolder(file)));
         } catch (ChecksFolderNotExistException e) {
             Logger.loggerWriteError(e);
-            System.err.println(e.getMessage());
         }
     }
     private static File findCheckFolder(File file) throws ChecksFolderNotExistException {
@@ -51,36 +49,28 @@ public class CheckParser {
      * Collect all files from Check package into collection "checks" and
      * sorting it while collection isn't empty. Garbage checks moving to
      * the temp/garbageChecks. Return the sort collection of orders.
-     *
      * @param file all order files from package
      * @return checks
      */
     private static List<File> sortChecks(File file) {
         //remove all unnecessary files
-        Logger.loggerWrite(ACCESS_CHECK_FOLDER_MESSAGE);
         List<File> checks = new ArrayList<>(List.of(file.listFiles()));
-        Logger.loggerWrite(REMOVING_GARBAGE_CHECK_MESSAGE);
-        Iterator<File> checkIter = checks.iterator();
-        while (checkIter.hasNext()) {
-            File check = checkIter.next();
-            if (!check.getName().matches(CHECK_REGEX)) {
-                try {
-                    Files.move(Paths.get(check.getPath()),
-                            Paths.get(PATH_TO_GARBAGE_CHECKS + check.getName()),
-                            StandardCopyOption.REPLACE_EXISTING);
-                } catch (IOException e) {
-                    System.out.println(ERROR_WHILE_MOVING_FILE_MESSAGE + e.getMessage());
-                    Logger.loggerWrite(e.getMessage() + CHECK_THE_ERROR_LOG_MESSAGE);
-                    Logger.loggerWriteError(e);
-                } catch (Exception e) {
-                    System.out.println(SOMETHING_WENT_WRONG_MESSAGE);
-                    Logger.loggerWrite(e.getMessage() + CHECK_THE_ERROR_LOG_MESSAGE);
-                    Logger.loggerWriteError(e);
+        try {
+            Logger.loggerWrite(ACCESS_CHECK_FOLDER_MESSAGE);
+            DirectoryValidation.isDirectoryEmptyValidation(file);
+            Logger.loggerWrite(REMOVING_GARBAGE_CHECK_MESSAGE);
+            Iterator<File> checkIter = checks.iterator();
+            while (checkIter.hasNext()) {
+                File check = checkIter.next();
+                if (!check.getName().matches(CHECK_REGEX)) {
+                    FileMover.moveFile(check);
+                    checkIter.remove();
                 }
-                checkIter.remove();
             }
+            Logger.loggerWrite(REMOVING_COMPLETE_MESSAGE);
+        } catch (IsDirectoryEmptyException e) {
+            Logger.loggerWriteError(e);
         }
-        Logger.loggerWrite(REMOVING_COMPLETE_MESSAGE);
         return checks;
     }
 
@@ -92,7 +82,12 @@ public class CheckParser {
      *
      * @param checkList get the sort collection from sortChecks method.
      */
-    private static void parseCheckInfo(List<File> checkList) {
+    private static double parseCheckInfo(List<File> checkList) {
+        //check is our collection empty
+        if(checkList.isEmpty()){
+            Logger.loggerWrite(NO_VALUABLE_CHECKS_MESSAGE);
+            return 0;
+        }
         //parsing check info
         Logger.loggerWrite(PARSING_CHECK_INFO_MESSAGE);
         List<String> billCheckList = new ArrayList<>();
@@ -105,7 +100,7 @@ public class CheckParser {
                     }
                 }
             } catch (Exception e) {
-                System.out.println(SOMETHING_WENT_WRONG_MESSAGE);
+                System.err.println(SOMETHING_WENT_WRONG_MESSAGE);
                 Logger.loggerWrite(e.getMessage() + CHECK_THE_ERROR_LOG_MESSAGE);
                 Logger.loggerWriteError(e);
             }
@@ -119,6 +114,7 @@ public class CheckParser {
             System.out.println(checkSum);
         }
         Logger.loggerWrite(TRANSFER_CHECK_INFO_MESSAGE);
+        return checkSum;
     }
 }
 

@@ -23,7 +23,7 @@ public class Logger {
             System.out.println(SOMETHING_WENT_WRONG_MESSAGE);
         }
     }
-
+        //TODO date with logs
     public static void loggerWriteError(Exception exp) {
         File logFile = new File(PATH_TO_ERROR_LOG);
         try (Writer writer = new FileWriter(logFile, true)) {
@@ -31,16 +31,16 @@ public class Logger {
             sb.append("[ERROR] ---> ");
             sb.append(DateAndTime.getDateAndTime());
             sb.append(" ---> ");
+            System.err.println(sb.toString() + exp.getMessage());
             StringWriter sw = new StringWriter();
             PrintWriter pw = new PrintWriter(sw);
             exp.printStackTrace(pw);
             sb.append(sw.toString());
             writer.write(sb.toString() + "\n");
-            System.out.println(sb.toString());
             sw.close();
             pw.close();
         } catch (IOException e) {
-            System.out.println(SOMETHING_WENT_WRONG_MESSAGE);
+            System.err.println(SOMETHING_WENT_WRONG_MESSAGE);
         }
     }
 }

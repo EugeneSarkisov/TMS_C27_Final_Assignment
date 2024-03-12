@@ -1,12 +1,9 @@
-package com.teachmeskills.final_assignment.validator.validations;
+package com.teachmeskills.final_assignment.util.validator.validations;
 
-import com.teachmeskills.final_assignment.custom_exceptions.ChecksFolderNotExistException;
 import com.teachmeskills.final_assignment.custom_exceptions.IsFolderNotExistException;
 import com.teachmeskills.final_assignment.custom_exceptions.IsDirectoryEmptyException;
 
 import java.io.File;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Contain methods which uses in class "Validator". Allow to
@@ -40,7 +37,7 @@ public class DirectoryValidation {
      * @throws IsDirectoryEmptyException - if folder empty.
      */
     public static void isDirectoryEmptyValidation(File file) throws IsDirectoryEmptyException {
-        if (file.listFiles() == null) {
+        if (file.listFiles().length == 0) {
             throw new IsDirectoryEmptyException(file.getPath() + " is empty.");
         }
     }

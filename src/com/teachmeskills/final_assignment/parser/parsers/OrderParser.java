@@ -1,8 +1,11 @@
-package com.teachmeskills.final_assignment.parser;
+package com.teachmeskills.final_assignment.parser.parsers;
 
 import com.teachmeskills.final_assignment.custom_exceptions.ChecksFolderNotExistException;
+import com.teachmeskills.final_assignment.custom_exceptions.IsDirectoryEmptyException;
 import com.teachmeskills.final_assignment.custom_exceptions.OrdersFolderNotExistException;
 import com.teachmeskills.final_assignment.util.logger.Logger;
+import com.teachmeskills.final_assignment.util.mover.FileMover;
+import com.teachmeskills.final_assignment.util.validator.validations.DirectoryValidation;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -16,6 +19,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import static com.teachmeskills.final_assignment.util.consts.messages.InvoiceParserLogMessages.NO_VALUABLE_INVOICES;
 import static com.teachmeskills.final_assignment.util.consts.messages.OrderParserLogMessages.*;
 import static com.teachmeskills.final_assignment.util.consts.path.Path.PATH_TO_GARBAGE_ORDERS;
 import static com.teachmeskills.final_assignment.util.consts.regex.Regex.ORDER_REGEX;
@@ -35,7 +39,6 @@ public class OrderParser {
             parseOrderInfo(sortOrders(findOrderFolder(file)));
         } catch (OrdersFolderNotExistException e) {
             Logger.loggerWriteError(e);
-            System.err.println(e.getMessage());
         }
     }
     private static File findOrderFolder(File file) throws OrdersFolderNotExistException {
@@ -59,31 +62,24 @@ public class OrderParser {
      */
 
     private static List<File> sortOrders(File file) {
-        //remove all unnecessary files
-        Logger.loggerWrite(ACCESS_ORDER_FOLDER_MESSAGE);
         List<File> orders = new ArrayList<>(List.of(file.listFiles()));
-        Logger.loggerWrite(REMOVING_GARBAGE_ORDER_MESSAGE);
-        Iterator<File> orderIter = orders.iterator();
-        while (orderIter.hasNext()) {
-            File order = orderIter.next();
-            if (!order.getName().toLowerCase().matches(ORDER_REGEX)) {
-                try {
-                    Files.move(Paths.get(order.getPath()),
-                            Paths.get(PATH_TO_GARBAGE_ORDERS + order.getName()),
-                            StandardCopyOption.REPLACE_EXISTING);
-                } catch (IOException e) {
-                    System.out.println(ERROR_WHILE_MOVING_FILE_MESSAGE + e.getMessage());
-                    Logger.loggerWrite(e.getMessage() + CHECK_THE_ERROR_LOG_MESSAGE);
-                    Logger.loggerWriteError(e);
-                } catch (Exception e) {
-                    System.out.println(SOMETHING_WENT_WRONG_MESSAGE);
-                    Logger.loggerWrite(e.getMessage() + CHECK_THE_ERROR_LOG_MESSAGE);
-                    Logger.loggerWriteError(e);
+        //remove all unnecessary files
+        try {
+            Logger.loggerWrite(ACCESS_ORDER_FOLDER_MESSAGE);
+            DirectoryValidation.isDirectoryEmptyValidation(file);
+            Logger.loggerWrite(REMOVING_GARBAGE_ORDER_MESSAGE);
+            Iterator<File> orderIter = orders.iterator();
+            while (orderIter.hasNext()) {
+                File order = orderIter.next();
+                if (!order.getName().toLowerCase().matches(ORDER_REGEX)) {
+                    FileMover.moveFile(order);
+                    orderIter.remove();
                 }
-                orderIter.remove();
             }
+            Logger.loggerWrite(REMOVING_COMPLETE_MESSAGE);
+        } catch (IsDirectoryEmptyException e){
+            Logger.loggerWriteError(e);
         }
-        Logger.loggerWrite(REMOVING_COMPLETE_MESSAGE);
         return orders;
     }
 
@@ -95,7 +91,11 @@ public class OrderParser {
      * @param orderList get the sort collection from sortOrder method.
      */
 
-    private static void parseOrderInfo(List<File> orderList) {
+    private static double parseOrderInfo(List<File> orderList) {
+        if(orderList.isEmpty()){
+            Logger.loggerWrite(NO_VALUABLE_INVOICES);
+            return 0;
+        }
         //parsing check info
         Logger.loggerWrite(PARSING_ORDER_INFO_MESSAGE);
         List<String> orderBillList = new ArrayList<>();
@@ -121,5 +121,6 @@ public class OrderParser {
             System.out.println(orderSum);
         }
         Logger.loggerWrite(TRANSFER_ORDER_INFO_MESSAGE);
+        return orderSum;
     }
 }

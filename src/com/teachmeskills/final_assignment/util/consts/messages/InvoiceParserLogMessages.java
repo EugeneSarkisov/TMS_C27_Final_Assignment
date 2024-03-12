@@ -7,4 +7,5 @@ public interface InvoiceParserLogMessages {
     String PARSING_INVOICE_INFO_MESSAGE = "Parsing info from 'INVOICE'";
     String PARSING_INVOICE_INFO_COMPLETE_MESSAGE = "Parsing complete. Summing all 'INVOICE' bills";
     String TRANSFER_INVOICE_INFO_MESSAGE ="Summing 'INVOICES' bills complete. Transfer information to report generator.";
+    String NO_VALUABLE_INVOICES = "There are no valuable 'INVOICES'";
 }

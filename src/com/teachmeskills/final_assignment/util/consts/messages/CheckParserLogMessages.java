@@ -7,4 +7,5 @@ public interface CheckParserLogMessages {
     String PARSING_CHECK_INFO_MESSAGE = "Parsing info from 'CHECKS'";
     String PARSING_CHECK_INFO_COMPLETE_MESSAGE = "Parsing complete. Summing all 'CHECKS' bills";
     String TRANSFER_CHECK_INFO_MESSAGE = "Summing 'CHECKS' bills complete. Transfer information to report generator.";
+    String NO_VALUABLE_CHECKS_MESSAGE = "There are no valuable 'CHECKS'";
 }

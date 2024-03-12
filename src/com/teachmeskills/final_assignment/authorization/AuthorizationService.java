@@ -1,7 +1,6 @@
 package com.teachmeskills.final_assignment.authorization;
 
 import com.teachmeskills.final_assignment.util.encoder.Encoder;
-import com.teachmeskills.final_assignment.authorization.Session;
 import com.teachmeskills.final_assignment.util.storage.StorageMock;
 
 public class AuthorizationService {
@@ -14,17 +13,13 @@ public class AuthorizationService {
 
         String decodedLogin = Encoder.decode(loginFromStorage);
         String decodedPassword = Encoder.decode(passwordFromStorage);
-
         if(login.toLowerCase().equals(decodedLogin) && password.equals(decodedPassword)){
-            System.out.println("Access");
+            System.out.println("Access granted");
             return new Session();
         }else {
-            // TODO incorrect login counter
-            System.out.println("Login or password is incorrect. Please try again.");
+            //TODO incorrect login counter
+            System.err.println("Login or password is incorrect. Please try again.");
             return null;
         }
-
     }
-
-
 }
