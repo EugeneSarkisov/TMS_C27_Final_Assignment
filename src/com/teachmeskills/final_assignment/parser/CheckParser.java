@@ -3,11 +3,13 @@ package com.teachmeskills.final_assignment.parser;
 
 import com.teachmeskills.final_assignment.custom_exceptions.ChecksFolderNotExistException;
 import com.teachmeskills.final_assignment.custom_exceptions.IsDirectoryEmptyException;
-import com.teachmeskills.final_assignment.util.mover.FileMover;
 import com.teachmeskills.final_assignment.util.logger.Logger;
+import com.teachmeskills.final_assignment.util.mover.FileMover;
 import com.teachmeskills.final_assignment.util.validator.validations.DirectoryValidation;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -15,9 +17,9 @@ import java.util.List;
 
 import static com.teachmeskills.final_assignment.util.consts.currency.Currency.EUR_TO_USD_EXCHANGE;
 import static com.teachmeskills.final_assignment.util.consts.messages.CheckParserLogMessages.*;
+import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMessages.*;
 import static com.teachmeskills.final_assignment.util.consts.path.Path.PATH_TO_GARBAGE_CHECKS;
 import static com.teachmeskills.final_assignment.util.consts.regex.Regex.CHECK_REGEX;
-import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMessages.*;
 
 /**
  * Parse ChecksFiles and get the sum of bills of all documents.
@@ -121,7 +123,6 @@ public class CheckParser {
         for (String bill : billCheckList) {
             checkSum += EUR_TO_USD_EXCHANGE * Double.parseDouble(bill.substring(23).trim().
                                                                  replace(",", "."));
-            System.out.println(checkSum);
         }
         Logger.loggerWrite(TRANSFER_CHECK_INFO_MESSAGE);
 

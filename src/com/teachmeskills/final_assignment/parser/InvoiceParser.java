@@ -2,8 +2,8 @@ package com.teachmeskills.final_assignment.parser;
 
 import com.teachmeskills.final_assignment.custom_exceptions.InvoicesFolderNotExistException;
 import com.teachmeskills.final_assignment.custom_exceptions.IsDirectoryEmptyException;
-import com.teachmeskills.final_assignment.util.mover.FileMover;
 import com.teachmeskills.final_assignment.util.logger.Logger;
+import com.teachmeskills.final_assignment.util.mover.FileMover;
 import com.teachmeskills.final_assignment.util.validator.validations.DirectoryValidation;
 
 import java.io.BufferedReader;
@@ -15,8 +15,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import static com.teachmeskills.final_assignment.util.consts.messages.InvoiceParserLogMessages.*;
-import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMessages.*;
 import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMessages.CHECK_THE_ERROR_LOG_MESSAGE;
+import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMessages.SOMETHING_WENT_WRONG_MESSAGE;
 import static com.teachmeskills.final_assignment.util.consts.path.Path.PATH_TO_GARBAGE_INVOICES;
 import static com.teachmeskills.final_assignment.util.consts.regex.Regex.INVOICE_REGEX;
 
@@ -121,7 +121,6 @@ public class InvoiceParser {
         double invoiceSum = 0.0;
         for (String bill : invoiceDocList) {
             invoiceSum += Double.parseDouble(bill.replaceAll("[a-zA-Z$]", "").trim());
-            System.out.println(invoiceSum);
         }
         Logger.loggerWrite(TRANSFER_INVOICE_INFO_MESSAGE);
         return invoiceSum;

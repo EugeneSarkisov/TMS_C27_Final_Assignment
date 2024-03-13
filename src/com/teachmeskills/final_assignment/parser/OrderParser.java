@@ -16,9 +16,9 @@ import java.util.List;
 
 import static com.teachmeskills.final_assignment.util.consts.messages.InvoiceParserLogMessages.NO_VALUABLE_INVOICES;
 import static com.teachmeskills.final_assignment.util.consts.messages.OrderParserLogMessages.*;
+import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMessages.*;
 import static com.teachmeskills.final_assignment.util.consts.path.Path.PATH_TO_GARBAGE_ORDERS;
 import static com.teachmeskills.final_assignment.util.consts.regex.Regex.ORDER_REGEX;
-import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMessages.*;
 
 /**
  * Parse OrderFiles and get the sum of bills of all documents.
@@ -123,7 +123,6 @@ public class OrderParser {
         double orderSum = 0.0;
         for (String bill : orderBillList) {
             orderSum += Double.parseDouble(bill.substring(11).trim().replace(",", ""));
-            System.out.println(orderSum);
         }
         Logger.loggerWrite(TRANSFER_ORDER_INFO_MESSAGE);
         return orderSum;
