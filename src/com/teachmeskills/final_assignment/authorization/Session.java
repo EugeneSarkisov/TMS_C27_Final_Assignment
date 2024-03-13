@@ -2,13 +2,15 @@ package com.teachmeskills.final_assignment.authorization;
 
 //TODO write javadoc
 
+import com.teachmeskills.final_assignment.parser.ParseDocs;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Objects;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-public final class Session {
+public final class Session extends ParseDocs {
 
     private String accessToken;
     private Date expDate;

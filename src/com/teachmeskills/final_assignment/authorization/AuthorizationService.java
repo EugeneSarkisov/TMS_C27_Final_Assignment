@@ -1,10 +1,11 @@
 package com.teachmeskills.final_assignment.authorization;
 //TODO write javadoc
 
+import com.teachmeskills.final_assignment.service.FileProcessService;
 import com.teachmeskills.final_assignment.util.encoder.Encoder;
 import com.teachmeskills.final_assignment.util.storage.StorageMock;
 
-public class AuthorizationService {
+public class AuthorizationService extends FileProcessService {
 
     public static Session authorization(String login, String password){
         //TODO log information about authorization

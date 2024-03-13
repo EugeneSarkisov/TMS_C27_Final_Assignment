@@ -2,7 +2,9 @@ package com.teachmeskills.final_assignment.util.storage;
 
 //TODO write javadoc
 
-public final class StorageMock {
+import com.teachmeskills.final_assignment.util.encoder.Encoder;
+
+public final class StorageMock extends Encoder {
 
     private final String login = "z9r669g68rcXdlcnR5";
     private final String password = "wajbbaievkMTIzNDVBQkM=";

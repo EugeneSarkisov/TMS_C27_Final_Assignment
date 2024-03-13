@@ -2,6 +2,7 @@ package com.teachmeskills.final_assignment.util.validator;
 
 import com.teachmeskills.final_assignment.custom_exceptions.IsFolderNotExistException;
 import com.teachmeskills.final_assignment.custom_exceptions.IsDirectoryEmptyException;
+import com.teachmeskills.final_assignment.service.FileProcessService;
 import com.teachmeskills.final_assignment.util.logger.Logger;
 import com.teachmeskills.final_assignment.util.validator.validations.DirectoryValidation;
 
@@ -18,7 +19,7 @@ import static com.teachmeskills.final_assignment.util.consts.messages.ValidatorM
  *
  * @author EugeneSarkisov
  */
-public class Validator {
+public class Validator extends FileProcessService {
 
     /**
      * Checking if folder empty or not exist. Get the methods from DirectoryValidation

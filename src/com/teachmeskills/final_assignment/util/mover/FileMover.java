@@ -6,6 +6,9 @@ package com.teachmeskills.final_assignment.util.mover;
  * @author EugeneSarkisov
  */
 
+import com.teachmeskills.final_assignment.parser.parsers.CheckParser;
+import com.teachmeskills.final_assignment.parser.parsers.InvoiceParser;
+import com.teachmeskills.final_assignment.parser.parsers.OrderParser;
 import com.teachmeskills.final_assignment.util.logger.Logger;
 
 import java.io.File;
@@ -17,7 +20,7 @@ import java.nio.file.StandardCopyOption;
 import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMessages.*;
 import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMessages.CHECK_THE_ERROR_LOG_MESSAGE;
 
-public class FileMover {
+public class FileMover extends InvoiceParser {
 
     /**
      * Get the path of file which need to be moved and path of way to moving.

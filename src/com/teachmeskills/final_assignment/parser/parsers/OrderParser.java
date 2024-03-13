@@ -3,6 +3,7 @@ package com.teachmeskills.final_assignment.parser.parsers;
 import com.teachmeskills.final_assignment.custom_exceptions.ChecksFolderNotExistException;
 import com.teachmeskills.final_assignment.custom_exceptions.IsDirectoryEmptyException;
 import com.teachmeskills.final_assignment.custom_exceptions.OrdersFolderNotExistException;
+import com.teachmeskills.final_assignment.parser.ParseDocs;
 import com.teachmeskills.final_assignment.util.logger.Logger;
 import com.teachmeskills.final_assignment.util.mover.FileMover;
 import com.teachmeskills.final_assignment.util.validator.validations.DirectoryValidation;
@@ -32,7 +33,7 @@ import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMes
  *
  * @author EugeneSarkisov
  */
-public class OrderParser {
+public class OrderParser extends ParseDocs {
 
     public static void parseOrderInfo(File file){
         try {

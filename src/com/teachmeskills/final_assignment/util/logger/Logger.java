@@ -6,7 +6,9 @@ package com.teachmeskills.final_assignment.util.logger;
  * @author EugeneSarkisov
  */
 
+import com.teachmeskills.final_assignment.authorization.AuthorizationService;
 import com.teachmeskills.final_assignment.util.date_sample.DateAndTime;
+import com.teachmeskills.final_assignment.util.validator.Validator;
 
 import java.io.*;
 
@@ -14,7 +16,7 @@ import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMes
 import static com.teachmeskills.final_assignment.util.consts.path.Path.PATH_TO_ERROR_LOG;
 import static com.teachmeskills.final_assignment.util.consts.path.Path.PATH_TO_LOG;
 
-public class Logger {
+public class Logger extends AuthorizationService {
 
     /**
      * loggerWrite writing user logs in runtime and showing this info in console.
@@ -27,7 +29,7 @@ public class Logger {
         try (Writer writer = new FileWriter(logFile, true)) {
             StringBuilder sb = new StringBuilder();
             sb.append("[INFO] ---> ");
-            sb.append(DateAndTime.getDateAndTime());
+            sb.append(DateAndTime.getDateAndTimeForLogs());
             sb.append(" ---> ");
             sb.append(string);
             writer.write(sb.toString() + "\n");
@@ -49,7 +51,7 @@ public class Logger {
         try (Writer writer = new FileWriter(logFile, true)) {
             StringBuilder sb = new StringBuilder();
             sb.append("[ERROR] ---> ");
-            sb.append(DateAndTime.getDateAndTime());
+            sb.append(DateAndTime.getDateAndTimeForLogs());
             sb.append(" ---> ");
             System.err.println(sb.toString() + exp.getMessage());
             StringWriter sw = new StringWriter();
