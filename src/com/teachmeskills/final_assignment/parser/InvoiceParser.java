@@ -1,9 +1,7 @@
-package com.teachmeskills.final_assignment.parser.parsers;
+package com.teachmeskills.final_assignment.parser;
 
-import com.teachmeskills.final_assignment.custom_exceptions.ChecksFolderNotExistException;
 import com.teachmeskills.final_assignment.custom_exceptions.InvoicesFolderNotExistException;
 import com.teachmeskills.final_assignment.custom_exceptions.IsDirectoryEmptyException;
-import com.teachmeskills.final_assignment.parser.ParseDocs;
 import com.teachmeskills.final_assignment.util.mover.FileMover;
 import com.teachmeskills.final_assignment.util.logger.Logger;
 import com.teachmeskills.final_assignment.util.validator.validations.DirectoryValidation;
@@ -30,7 +28,7 @@ import static com.teachmeskills.final_assignment.util.consts.regex.Regex.INVOICE
  * @author Kirril Palianitsa
  */
 
-public class InvoiceParser extends ParseDocs {
+public class InvoiceParser {
     public static double parseInvoiceInfo(File file) {
         try {
             return parseInvoiceInfo(sortInvoice(findInvoiceFolder(file)));

@@ -106,3 +106,18 @@
 [INFO] ---> 2024.03.13 at 23:27:33:298 ---> Parsing info from 'ORDERS'
 [INFO] ---> 2024.03.13 at 23:27:33:304 ---> Parsing complete. Summing all 'ORDERS' bills
 [INFO] ---> 2024.03.13 at 23:27:33:307 ---> Summing 'ORDERS' bills complete. Transfer information to report generator.
+[INFO] ---> 2024.03.13 at 23:58:03:902 ---> Getting login from storage.
+[INFO] ---> 2024.03.13 at 23:58:03:915 ---> Getting password from storage.
+[INFO] ---> 2024.03.13 at 23:58:03:915 ---> Checking the correctness of the entered data...
+[INFO] ---> 2024.03.14 at 00:06:56:349 ---> Getting login from storage.
+[INFO] ---> 2024.03.14 at 00:06:56:362 ---> Getting password from storage.
+[INFO] ---> 2024.03.14 at 00:06:56:362 ---> Checking the correctness of the entered data...
+[INFO] ---> 2024.03.14 at 00:13:52:675 ---> Getting login from storage.
+[INFO] ---> 2024.03.14 at 00:13:52:688 ---> Getting password from storage.
+[INFO] ---> 2024.03.14 at 00:13:52:688 ---> Checking the correctness of the entered data...
+[INFO] ---> 2024.03.14 at 00:13:57:680 ---> Validate folder...
+[INFO] ---> 2024.03.14 at 00:13:57:682 ---> else isn't exist. Please, check the error_log
+[INFO] ---> 2024.03.14 at 00:13:57:683 ---> Folder doesn't check the validation.
+[INFO] ---> 2024.03.14 at 00:14:10:79 ---> Getting login from storage.
+[INFO] ---> 2024.03.14 at 00:14:10:91 ---> Getting password from storage.
+[INFO] ---> 2024.03.14 at 00:14:10:92 ---> Checking the correctness of the entered data...

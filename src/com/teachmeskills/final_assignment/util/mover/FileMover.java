@@ -6,9 +6,7 @@ package com.teachmeskills.final_assignment.util.mover;
  * @author EugeneSarkisov
  */
 
-import com.teachmeskills.final_assignment.parser.parsers.CheckParser;
-import com.teachmeskills.final_assignment.parser.parsers.InvoiceParser;
-import com.teachmeskills.final_assignment.parser.parsers.OrderParser;
+import com.teachmeskills.final_assignment.parser.InvoiceParser;
 import com.teachmeskills.final_assignment.util.logger.Logger;
 
 import java.io.File;

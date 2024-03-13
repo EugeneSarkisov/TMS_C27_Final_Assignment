@@ -1,9 +1,7 @@
-package com.teachmeskills.final_assignment.parser.parsers;
+package com.teachmeskills.final_assignment.parser;
 
-import com.teachmeskills.final_assignment.custom_exceptions.ChecksFolderNotExistException;
 import com.teachmeskills.final_assignment.custom_exceptions.IsDirectoryEmptyException;
 import com.teachmeskills.final_assignment.custom_exceptions.OrdersFolderNotExistException;
-import com.teachmeskills.final_assignment.parser.ParseDocs;
 import com.teachmeskills.final_assignment.util.logger.Logger;
 import com.teachmeskills.final_assignment.util.mover.FileMover;
 import com.teachmeskills.final_assignment.util.validator.validations.DirectoryValidation;
@@ -11,10 +9,6 @@ import com.teachmeskills.final_assignment.util.validator.validations.DirectoryVa
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -33,8 +27,7 @@ import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMes
  *
  * @author EugeneSarkisov
  */
-public class OrderParser extends ParseDocs {
-
+public class OrderParser {
     public static double parseOrderInfo(File file){
         try {
             return parseOrderInfo(sortOrders(findOrderFolder(file)));

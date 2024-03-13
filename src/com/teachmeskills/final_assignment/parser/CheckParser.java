@@ -1,9 +1,8 @@
-package com.teachmeskills.final_assignment.parser.parsers;
+package com.teachmeskills.final_assignment.parser;
 
 
 import com.teachmeskills.final_assignment.custom_exceptions.ChecksFolderNotExistException;
 import com.teachmeskills.final_assignment.custom_exceptions.IsDirectoryEmptyException;
-import com.teachmeskills.final_assignment.parser.ParseDocs;
 import com.teachmeskills.final_assignment.util.mover.FileMover;
 import com.teachmeskills.final_assignment.util.logger.Logger;
 import com.teachmeskills.final_assignment.util.validator.validations.DirectoryValidation;
@@ -27,19 +26,15 @@ import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMes
  *
  * @author EugeneSarkisov
  */
-public class CheckParser extends ParseDocs {
+public class CheckParser {
     public static double parseCheckInfo(File file) {
         try {
             return parseCheckInfo(sortChecks(findCheckFolder(file)));
-
         } catch (ChecksFolderNotExistException e) {
             Logger.loggerWriteError(e);
             return 0.0;
-
         }
     }
-
-
     /**
      * findCheckFolder checks if folder checks exist or not. Validation happened with
      * filtering files in package.
