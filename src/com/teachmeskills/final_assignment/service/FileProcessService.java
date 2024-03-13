@@ -13,17 +13,25 @@ import com.teachmeskills.final_assignment.util.validator.Validator;
 import java.io.File;
 import java.util.Scanner;
 
-import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMessages.SOMETHING_WENT_WRONG_MESSAGE;
+import static com.teachmeskills.final_assignment.util.consts.messages.AuthorizationMessages.*;
+import static com.teachmeskills.final_assignment.util.consts.messages.ProgramMessages.WELCOME_MESSAGE;
+import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMessages.*;
 import static com.teachmeskills.final_assignment.util.consts.messages.ValidatorMessages.VALIDATION_ERROR_MESSAGE;
 
 public class FileProcessService {
     public static void doFileProcess() {
         try (Scanner scanner = new Scanner(System.in)) {
-            System.out.println("For authorization please enter your login, password and path to the folder: ");
+            Logger.loggerWrite(START_PROCESSING_MESSAGE);
+            System.out.println(WELCOME_MESSAGE);
+            System.out.println(AUTHORIZATION_START_MESSAGE);
+            System.out.print(LOGIN_MESSAGE);
             String login = scanner.next();
+            System.out.println(PASSWORD_MESSAGE);
             String password = scanner.next();
             Session session = AuthorizationService.authorization(login, password);
             if (session != null && session.isSessionStillAlive()) {
+                Logger.loggerWrite(SUCCESSFULLY_LOGIN_MESSAGE);
+                System.out.print(PATH_MESSAGE);
                 File docs = new File(scanner.next());
                 if (Validator.folderValidator(docs)) {
                     ReportGenerator.report(CheckParser.parseCheckInfo(docs),
@@ -33,7 +41,7 @@ public class FileProcessService {
                     Logger.loggerWrite(VALIDATION_ERROR_MESSAGE);
                 }
             } else {
-                System.out.println("Session was expired or do not exists.");
+                System.out.println(SESSION_NULL_MESSAGE);
             }
         } catch (Exception e) {
             Logger.loggerWrite(SOMETHING_WENT_WRONG_MESSAGE);

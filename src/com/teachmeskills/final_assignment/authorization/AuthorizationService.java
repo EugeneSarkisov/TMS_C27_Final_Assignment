@@ -1,7 +1,6 @@
 package com.teachmeskills.final_assignment.authorization;
 //TODO write javadoc
 
-import com.teachmeskills.final_assignment.util.consts.messages.AuthorizationMessages;
 import com.teachmeskills.final_assignment.util.encoder.Encoder;
 import com.teachmeskills.final_assignment.util.logger.Logger;
 import com.teachmeskills.final_assignment.util.storage.StorageMock;
@@ -20,10 +19,9 @@ public class AuthorizationService {
         String decodedLogin = Encoder.decode(loginFromStorage);
         String decodedPassword = Encoder.decode(passwordFromStorage);
         if(login.toLowerCase().equals(decodedLogin) && password.equals(decodedPassword)){
-            System.out.println("Access granted. Please");
             return new Session();
         }else {
-            System.err.println("Login or password is incorrect. Please try again.");
+            System.err.println(LOGIN_PASSWORD_INCORRECT_MESSAGE);
             return null;
         }
     }

@@ -9,6 +9,8 @@ import java.util.Objects;
 import java.util.Random;
 import java.util.stream.Collectors;
 
+import static com.teachmeskills.final_assignment.util.consts.session_parameters.SessionParameters.*;
+
 public final class Session {
 
     private String accessToken;
@@ -19,7 +21,7 @@ public final class Session {
         setExpDate();
     }
     public boolean isSessionStillAlive () {
-        if (this.accessToken.length() == 16 &&
+        if (this.accessToken.length() == ACCESS_TOKEN_LENGTH &&
                 this.expDate.after(new Date())) {
             return true;
         } else {
@@ -28,9 +30,9 @@ public final class Session {
     }
 
     private void setAccessToken(){
-        String symbols = "abcdefghijklmnopqrstuvwxyz0123456789";
+        String symbols = SESSION_GEN_SYMBOLS;
 
-        this.accessToken = new Random().ints(16,0,symbols.length())
+        this.accessToken = new Random().ints(ACCESS_TOKEN_LENGTH,0,symbols.length())
                                        .mapToObj(symbols::charAt)
                                        .map(Objects::toString)
                                        .collect(Collectors.joining());
@@ -38,7 +40,7 @@ public final class Session {
     private void setExpDate(){
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
-        calendar.add(Calendar.MINUTE,10);
+        calendar.add(Calendar.MINUTE,SESSION_LIFETIME);
         this.expDate = calendar.getTime();
         }
     }
