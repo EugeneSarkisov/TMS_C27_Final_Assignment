@@ -18,7 +18,7 @@ public class DateAndTime extends Logger {
      * @return - string with date and time in format: "yyyy.MM.dd 'at' HH:mm:ss:S"
      */
 
-    public static String getDateAndTimeForLogs(){
+    public static String getDateAndTime(){
         Date date = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd 'at' HH:mm:ss:S");
         return dateFormat.format(date);

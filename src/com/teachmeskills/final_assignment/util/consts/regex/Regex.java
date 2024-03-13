@@ -3,7 +3,7 @@ package com.teachmeskills.final_assignment.util.consts.regex;
 /**
  * Contain constants of regex's for parsers;
  *
- * @author EugeneSarkisov, Kirill Palianitsa
+ * @author EugeneSarkisov, KirillPalianitsa
  */
 
 public interface Regex {

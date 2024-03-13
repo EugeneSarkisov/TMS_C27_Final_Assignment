@@ -28,13 +28,17 @@ import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMes
  * @author EugeneSarkisov
  */
 public class CheckParser extends ParseDocs {
-    public static void parseCheckInfo(File file) {
+    public static double parseCheckInfo(File file) {
         try {
-            parseCheckInfo(sortChecks(findCheckFolder(file)));
+            return parseCheckInfo(sortChecks(findCheckFolder(file)));
+
         } catch (ChecksFolderNotExistException e) {
             Logger.loggerWriteError(e);
+            return 0.0;
+
         }
     }
+
 
     /**
      * findCheckFolder checks if folder checks exist or not. Validation happened with
@@ -118,13 +122,14 @@ public class CheckParser extends ParseDocs {
         }
         Logger.loggerWrite(PARSING_CHECK_INFO_COMPLETE_MESSAGE);
         //summing all necessary bills
-        double checkSum = 0.0;
+        double  checkSum = 0.0;
         for (String bill : billCheckList) {
             checkSum += EUR_TO_USD_EXCHANGE * Double.parseDouble(bill.substring(23).trim().
                                                                  replace(",", "."));
             System.out.println(checkSum);
         }
         Logger.loggerWrite(TRANSFER_CHECK_INFO_MESSAGE);
+
         return checkSum;
     }
 }

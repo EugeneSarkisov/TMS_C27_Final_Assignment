@@ -35,11 +35,12 @@ import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMes
  */
 public class OrderParser extends ParseDocs {
 
-    public static void parseOrderInfo(File file){
+    public static double parseOrderInfo(File file){
         try {
-            parseOrderInfo(sortOrders(findOrderFolder(file)));
+            return parseOrderInfo(sortOrders(findOrderFolder(file)));
         } catch (OrdersFolderNotExistException e) {
             Logger.loggerWriteError(e);
+            return 0.0;
         }
     }
 

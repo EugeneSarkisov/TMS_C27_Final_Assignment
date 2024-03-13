@@ -1,17 +1,22 @@
 package com.teachmeskills.final_assignment.authorization;
 //TODO write javadoc
 
-import com.teachmeskills.final_assignment.service.FileProcessService;
+import com.teachmeskills.final_assignment.util.consts.messages.AuthorizationMessages;
 import com.teachmeskills.final_assignment.util.encoder.Encoder;
+import com.teachmeskills.final_assignment.util.logger.Logger;
 import com.teachmeskills.final_assignment.util.storage.StorageMock;
 
-public class AuthorizationService extends FileProcessService {
+import static com.teachmeskills.final_assignment.util.consts.messages.AuthorizationMessages.*;
+
+public class AuthorizationService {
 
     public static Session authorization(String login, String password){
-        //TODO log information about authorization
         StorageMock storage = new StorageMock();
+        Logger.loggerWrite(GETTING_LOGIN_MESSAGE);
         String loginFromStorage = storage.getLogin();
+        Logger.loggerWrite(GETTING_PASSWORD_MESSAGE);
         String passwordFromStorage = storage.getPassword();
+        Logger.loggerWrite(CHECKING_DATA_MESSAGE);
 
         String decodedLogin = Encoder.decode(loginFromStorage);
         String decodedPassword = Encoder.decode(passwordFromStorage);

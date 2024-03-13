@@ -31,11 +31,12 @@ import static com.teachmeskills.final_assignment.util.consts.regex.Regex.INVOICE
  */
 
 public class InvoiceParser extends ParseDocs {
-    public static void parseInvoiceInfo(File file) {
+    public static double parseInvoiceInfo(File file) {
         try {
-            parseInvoiceInfo(sortInvoice(findInvoiceFolder(file)));
+            return parseInvoiceInfo(sortInvoice(findInvoiceFolder(file)));
         } catch (InvoicesFolderNotExistException e) {
             Logger.loggerWriteError(e);
+            return 0.0;
         }
     }
     /**

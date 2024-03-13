@@ -3,7 +3,7 @@ package com.teachmeskills.final_assignment.util.consts.messages;
 /**
  * Contain constants of log messages from invoice parser;
  *
- * @author EugeneSarkisov, Kirill Palianitsa
+ * @author EugeneSarkisov, KirillPalianitsa
  */
 
 public interface InvoiceParserLogMessages {

@@ -8,7 +8,6 @@ package com.teachmeskills.final_assignment.util.logger;
 
 import com.teachmeskills.final_assignment.authorization.AuthorizationService;
 import com.teachmeskills.final_assignment.util.date_sample.DateAndTime;
-import com.teachmeskills.final_assignment.util.validator.Validator;
 
 import java.io.*;
 
@@ -29,7 +28,7 @@ public class Logger extends AuthorizationService {
         try (Writer writer = new FileWriter(logFile, true)) {
             StringBuilder sb = new StringBuilder();
             sb.append("[INFO] ---> ");
-            sb.append(DateAndTime.getDateAndTimeForLogs());
+            sb.append(DateAndTime.getDateAndTime());
             sb.append(" ---> ");
             sb.append(string);
             writer.write(sb.toString() + "\n");
@@ -51,7 +50,7 @@ public class Logger extends AuthorizationService {
         try (Writer writer = new FileWriter(logFile, true)) {
             StringBuilder sb = new StringBuilder();
             sb.append("[ERROR] ---> ");
-            sb.append(DateAndTime.getDateAndTimeForLogs());
+            sb.append(DateAndTime.getDateAndTime());
             sb.append(" ---> ");
             System.err.println(sb.toString() + exp.getMessage());
             StringWriter sw = new StringWriter();
