@@ -1,11 +1,5 @@
 package com.teachmeskills.final_assignment.util.logger;
 
-/**
- * Uses for collecting and writing logs about runtime process.
- *
- * @author EugeneSarkisov
- */
-
 import com.teachmeskills.final_assignment.authorization.AuthorizationService;
 import com.teachmeskills.final_assignment.util.date_sample.DateAndTime;
 
@@ -15,11 +9,18 @@ import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMes
 import static com.teachmeskills.final_assignment.util.consts.path.Path.PATH_TO_ERROR_LOG;
 import static com.teachmeskills.final_assignment.util.consts.path.Path.PATH_TO_LOG;
 
+/**
+ * Uses for collecting and writing logs about runtime process.
+ *
+ * @author EugeneSarkisov
+ */
+
 public class Logger extends AuthorizationService {
 
     /**
      * loggerWrite writing user logs in runtime and showing this info in console.
      * All logs contain in log/log.txt
+     *
      * @param string - contain message which we need to write in logs.
      */
 
@@ -37,11 +38,12 @@ public class Logger extends AuthorizationService {
             System.out.println(SOMETHING_WENT_WRONG_MESSAGE);
         }
     }
-        //TODO date with logs
+    //TODO date with logs
 
     /**
      * loggerWriteError writing error logs in runtime and showing this info in console.
      * All logs contain in log/error_log.txt
+     *
      * @param exp - contain exception and get exception message which we need to write in logs.
      */
 

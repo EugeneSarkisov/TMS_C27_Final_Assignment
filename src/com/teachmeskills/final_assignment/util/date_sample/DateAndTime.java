@@ -1,15 +1,15 @@
 package com.teachmeskills.final_assignment.util.date_sample;
 
+import com.teachmeskills.final_assignment.util.logger.Logger;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 /**
  * Contain method which return date and time in local format for logger
  *
  * @author EugeneSarkisov;
  */
-
-import com.teachmeskills.final_assignment.util.logger.Logger;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class DateAndTime extends Logger {
 

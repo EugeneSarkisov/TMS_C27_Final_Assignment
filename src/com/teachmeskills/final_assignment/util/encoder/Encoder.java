@@ -1,5 +1,9 @@
 package com.teachmeskills.final_assignment.util.encoder;
 
+import java.util.Base64;
+import java.util.Objects;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 /**
  * Uses for encode and decode login data.
@@ -8,15 +12,11 @@ package com.teachmeskills.final_assignment.util.encoder;
  * @author KirillPalianitsa
  */
 
-import java.util.Base64;
-import java.util.Objects;
-import java.util.Random;
-import java.util.stream.Collectors;
-
 public class Encoder {
 
     /**
      * code encodes user data for authorisation
+     *
      * @param input - contains data entered by the user
      * @return the encoded string
      */
@@ -28,6 +28,7 @@ public class Encoder {
 
     /**
      * code decodes stored data for authorisation
+     *
      * @param input - contains stored data entered by the user
      * @return the decoded string
      */
@@ -39,6 +40,7 @@ public class Encoder {
 
     /**
      * addSalt adds a certain number of characters, encrypting the stored data
+     *
      * @param input - contains stored data entered by the user
      * @return the encrypted input
      */

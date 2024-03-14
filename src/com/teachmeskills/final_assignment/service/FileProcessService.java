@@ -1,5 +1,5 @@
 package com.teachmeskills.final_assignment.service;
-//TODO write javadoc
+
 
 import com.teachmeskills.final_assignment.authorization.AuthorizationService;
 import com.teachmeskills.final_assignment.authorization.Session;
@@ -14,11 +14,25 @@ import java.io.File;
 import java.util.Scanner;
 
 import static com.teachmeskills.final_assignment.util.consts.messages.AuthorizationMessages.*;
+import static com.teachmeskills.final_assignment.util.consts.messages.ProgramMessages.PATH_MESSAGE;
 import static com.teachmeskills.final_assignment.util.consts.messages.ProgramMessages.WELCOME_MESSAGE;
 import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMessages.*;
 import static com.teachmeskills.final_assignment.util.consts.messages.ValidatorMessages.VALIDATION_ERROR_MESSAGE;
 
+/**
+ * Method starts processing of program. Contain all necessary verifications and
+ * validations, all information of process collecting to log file and error log file.
+ *
+ * @author EugeneSarkisov, KirillPalianitsa
+ */
+
 public class FileProcessService {
+
+    /**
+     * Access to the programme is by login and password. The program receives the path
+     * to the folder as input, reads information from the files and
+     * compiles reports on them.
+     */
     public static void doFileProcess() {
         try (Scanner scanner = new Scanner(System.in)) {
             Logger.loggerWrite(START_PROCESSING_MESSAGE);
@@ -26,7 +40,7 @@ public class FileProcessService {
             System.out.println(AUTHORIZATION_START_MESSAGE);
             System.out.print(LOGIN_MESSAGE);
             String login = scanner.next();
-            System.out.println(PASSWORD_MESSAGE);
+            System.out.print(PASSWORD_MESSAGE);
             String password = scanner.next();
             Session session = AuthorizationService.authorization(login, password);
             if (session != null && session.isSessionStillAlive()) {
@@ -41,7 +55,7 @@ public class FileProcessService {
                     Logger.loggerWrite(VALIDATION_ERROR_MESSAGE);
                 }
             } else {
-                System.out.println(SESSION_NULL_MESSAGE);
+                Logger.loggerWrite(SESSION_NULL_MESSAGE);
             }
         } catch (Exception e) {
             Logger.loggerWrite(SOMETHING_WENT_WRONG_MESSAGE);

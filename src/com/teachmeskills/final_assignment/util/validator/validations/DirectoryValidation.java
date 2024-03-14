@@ -1,8 +1,7 @@
 package com.teachmeskills.final_assignment.util.validator.validations;
 
-import com.teachmeskills.final_assignment.custom_exceptions.IsFolderNotExistException;
 import com.teachmeskills.final_assignment.custom_exceptions.IsDirectoryEmptyException;
-import com.teachmeskills.final_assignment.service.FileProcessService;
+import com.teachmeskills.final_assignment.custom_exceptions.IsFolderNotExistException;
 
 import java.io.File;
 
@@ -14,7 +13,7 @@ import java.io.File;
  * @author EugeneSarkisov
  */
 
-public class DirectoryValidation extends FileProcessService {
+public class DirectoryValidation {
 
     /**
      * Validate if folder exist with "if" operator. Validation makes

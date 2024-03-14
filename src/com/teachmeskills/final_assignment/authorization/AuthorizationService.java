@@ -17,11 +17,12 @@ public class AuthorizationService {
      * Accepts authorisation data as input.
      * Checks the entered data against the data stored in memory.
      * Gives the user access to the session
-     * @param login - user login
+     *
+     * @param login    - user login
      * @param password - user password
      * @return running session
      */
-    public static Session authorization(String login, String password){
+    public static Session authorization(String login, String password) {
         StorageMock storage = new StorageMock();
         Logger.loggerWrite(GETTING_LOGIN_MESSAGE);
         String loginFromStorage = storage.getLogin();
@@ -30,11 +31,11 @@ public class AuthorizationService {
         Logger.loggerWrite(CHECKING_DATA_MESSAGE);
         String decodedLogin = Encoder.decode(loginFromStorage);
         String decodedPassword = Encoder.decode(passwordFromStorage);
-        if(login.toLowerCase().equals(decodedLogin) && password.equals(decodedPassword)){
-            System.out.println("Access granted. Please enter path to the folder: ");
+        if (login.toLowerCase().equals(decodedLogin) && password.equals(decodedPassword)) {
+            Logger.loggerWrite(FOLDER_PATH_MESSAGE);
             return new Session();
-        }else {
-            System.err.println("Login or password is incorrect. Please try again.");
+        } else {
+            System.err.println(LOGIN_PASSWORD_INCORRECT_MESSAGE);
             return null;
         }
     }

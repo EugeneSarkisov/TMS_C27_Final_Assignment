@@ -37,9 +37,11 @@ public class CheckParser {
             return 0.0;
         }
     }
+
     /**
      * findCheckFolder checks if folder checks exist or not. Validation happened with
      * filtering files in package.
+     *
      * @param file - get the file from validator;
      * @return - if folder exist - return the file with package;
      * @throws ChecksFolderNotExistException - if folder not exist;
@@ -61,6 +63,7 @@ public class CheckParser {
      * Collect all files from Check package into collection "checks" and
      * sorting it while collection isn't empty. Garbage checks moving to
      * the temp/garbageChecks. Return the sort collection of orders.
+     *
      * @param file all order files from package
      * @return checks
      */
@@ -91,12 +94,13 @@ public class CheckParser {
      * bill string happening when reader find string with key-word "Total".
      * Next, all strings collect in orderBillList, from every string we get
      * value of order and summing it in orderSum.
+     *
      * @param checkList get the sort collection from sortChecks method.
      * @return checkSum - all necessary bills summing together.
      */
     private static double parseCheckInfo(List<File> checkList) {
         //check is our collection empty
-        if(checkList.isEmpty()){
+        if (checkList.isEmpty()) {
             Logger.loggerWrite(NO_VALUABLE_CHECKS_MESSAGE);
             return 0;
         }
@@ -119,10 +123,10 @@ public class CheckParser {
         }
         Logger.loggerWrite(PARSING_CHECK_INFO_COMPLETE_MESSAGE);
         //summing all necessary bills
-        double  checkSum = 0.0;
+        double checkSum = 0.0;
         for (String bill : billCheckList) {
             checkSum += EUR_TO_USD_EXCHANGE * Double.parseDouble(bill.substring(23).trim().
-                                                                 replace(",", "."));
+                    replace(",", "."));
         }
         Logger.loggerWrite(TRANSFER_CHECK_INFO_MESSAGE);
 

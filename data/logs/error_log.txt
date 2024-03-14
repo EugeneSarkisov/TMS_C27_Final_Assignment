@@ -752,3 +752,83 @@
 	at com.teachmeskills.final_assignment.service.FileProcessService.doFileProcess(FileProcessService.java:16)
 	at com.teachmeskills.final_assignment.run.Runner.main(Runner.java:9)
 
+[ERROR] ---> 2024.03.14 at 16:37:46:792 ---> com.teachmeskills.final_assignment.custom_exceptions.IsFolderNotExistException: da isn't exist.
+	at com.teachmeskills.final_assignment.util.validator.validations.DirectoryValidation.isFileExistsValidation(DirectoryValidation.java:29)
+	at com.teachmeskills.final_assignment.util.validator.Validator.folderValidator(Validator.java:34)
+	at com.teachmeskills.final_assignment.service.FileProcessService.doFileProcess(FileProcessService.java:49)
+	at com.teachmeskills.final_assignment.run.Runner.main(Runner.java:8)
+
+[ERROR] ---> 2024.03.14 at 16:44:36:338 ---> com.teachmeskills.final_assignment.custom_exceptions.IsFolderNotExistException: f isn't exist.
+	at com.teachmeskills.final_assignment.util.validator.validations.DirectoryValidation.isFileExistsValidation(DirectoryValidation.java:29)
+	at com.teachmeskills.final_assignment.util.validator.Validator.folderValidator(Validator.java:34)
+	at com.teachmeskills.final_assignment.service.FileProcessService.doFileProcess(FileProcessService.java:50)
+	at com.teachmeskills.final_assignment.run.Runner.main(Runner.java:8)
+
+[ERROR] ---> 2024.03.14 at 16:47:39:446 ---> com.teachmeskills.final_assignment.custom_exceptions.IsFolderNotExistException: f isn't exist.
+	at com.teachmeskills.final_assignment.util.validator.validations.DirectoryValidation.isFileExistsValidation(DirectoryValidation.java:29)
+	at com.teachmeskills.final_assignment.util.validator.Validator.folderValidator(Validator.java:35)
+	at com.teachmeskills.final_assignment.service.FileProcessService.doFileProcess(FileProcessService.java:50)
+	at com.teachmeskills.final_assignment.run.Runner.main(Runner.java:8)
+
+[ERROR] ---> 2024.03.14 at 16:55:08:435 ---> com.teachmeskills.final_assignment.custom_exceptions.IsDirectoryEmptyException: C:\Users\Моргул\Desktop\qwe\checks is empty.
+	at com.teachmeskills.final_assignment.util.validator.validations.DirectoryValidation.isDirectoryEmptyValidation(DirectoryValidation.java:42)
+	at com.teachmeskills.final_assignment.parser.CheckParser.sortChecks(CheckParser.java:75)
+	at com.teachmeskills.final_assignment.parser.CheckParser.parseCheckInfo(CheckParser.java:34)
+	at com.teachmeskills.final_assignment.service.FileProcessService.doFileProcess(FileProcessService.java:51)
+	at com.teachmeskills.final_assignment.run.Runner.main(Runner.java:8)
+
+[ERROR] ---> 2024.03.14 at 16:55:08:449 ---> com.teachmeskills.final_assignment.custom_exceptions.IsDirectoryEmptyException: C:\Users\Моргул\Desktop\qwe\invoices is empty.
+	at com.teachmeskills.final_assignment.util.validator.validations.DirectoryValidation.isDirectoryEmptyValidation(DirectoryValidation.java:42)
+	at com.teachmeskills.final_assignment.parser.InvoiceParser.sortInvoice(InvoiceParser.java:74)
+	at com.teachmeskills.final_assignment.parser.InvoiceParser.parseInvoiceInfo(InvoiceParser.java:34)
+	at com.teachmeskills.final_assignment.service.FileProcessService.doFileProcess(FileProcessService.java:52)
+	at com.teachmeskills.final_assignment.run.Runner.main(Runner.java:8)
+
+[ERROR] ---> 2024.03.14 at 16:55:08:463 ---> com.teachmeskills.final_assignment.custom_exceptions.IsDirectoryEmptyException: C:\Users\Моргул\Desktop\qwe\orders is empty.
+	at com.teachmeskills.final_assignment.util.validator.validations.DirectoryValidation.isDirectoryEmptyValidation(DirectoryValidation.java:42)
+	at com.teachmeskills.final_assignment.parser.OrderParser.sortOrders(OrderParser.java:75)
+	at com.teachmeskills.final_assignment.parser.OrderParser.parseOrderInfo(OrderParser.java:33)
+	at com.teachmeskills.final_assignment.service.FileProcessService.doFileProcess(FileProcessService.java:53)
+	at com.teachmeskills.final_assignment.run.Runner.main(Runner.java:8)
+
+[ERROR] ---> 2024.03.14 at 17:01:05:314 ---> com.teachmeskills.final_assignment.custom_exceptions.IsDirectoryEmptyException: C:\Users\Моргул\Desktop\qwe\checks is empty.
+	at com.teachmeskills.final_assignment.util.validator.validations.DirectoryValidation.isDirectoryEmptyValidation(DirectoryValidation.java:42)
+	at com.teachmeskills.final_assignment.parser.CheckParser.sortChecks(CheckParser.java:75)
+	at com.teachmeskills.final_assignment.parser.CheckParser.parseCheckInfo(CheckParser.java:34)
+	at com.teachmeskills.final_assignment.service.FileProcessService.doFileProcess(FileProcessService.java:51)
+	at com.teachmeskills.final_assignment.run.Runner.main(Runner.java:8)
+
+[ERROR] ---> 2024.03.14 at 17:01:05:317 ---> com.teachmeskills.final_assignment.custom_exceptions.IsDirectoryEmptyException: C:\Users\Моргул\Desktop\qwe\invoices is empty.
+	at com.teachmeskills.final_assignment.util.validator.validations.DirectoryValidation.isDirectoryEmptyValidation(DirectoryValidation.java:42)
+	at com.teachmeskills.final_assignment.parser.InvoiceParser.sortInvoice(InvoiceParser.java:74)
+	at com.teachmeskills.final_assignment.parser.InvoiceParser.parseInvoiceInfo(InvoiceParser.java:34)
+	at com.teachmeskills.final_assignment.service.FileProcessService.doFileProcess(FileProcessService.java:52)
+	at com.teachmeskills.final_assignment.run.Runner.main(Runner.java:8)
+
+[ERROR] ---> 2024.03.14 at 17:01:05:320 ---> com.teachmeskills.final_assignment.custom_exceptions.IsDirectoryEmptyException: C:\Users\Моргул\Desktop\qwe\orders is empty.
+	at com.teachmeskills.final_assignment.util.validator.validations.DirectoryValidation.isDirectoryEmptyValidation(DirectoryValidation.java:42)
+	at com.teachmeskills.final_assignment.parser.OrderParser.sortOrders(OrderParser.java:75)
+	at com.teachmeskills.final_assignment.parser.OrderParser.parseOrderInfo(OrderParser.java:33)
+	at com.teachmeskills.final_assignment.service.FileProcessService.doFileProcess(FileProcessService.java:53)
+	at com.teachmeskills.final_assignment.run.Runner.main(Runner.java:8)
+
+[ERROR] ---> 2024.03.14 at 17:01:56:380 ---> com.teachmeskills.final_assignment.custom_exceptions.IsDirectoryEmptyException: C:\Users\Моргул\Desktop\qwe\checks is empty.
+	at com.teachmeskills.final_assignment.util.validator.validations.DirectoryValidation.isDirectoryEmptyValidation(DirectoryValidation.java:42)
+	at com.teachmeskills.final_assignment.parser.CheckParser.sortChecks(CheckParser.java:75)
+	at com.teachmeskills.final_assignment.parser.CheckParser.parseCheckInfo(CheckParser.java:34)
+	at com.teachmeskills.final_assignment.service.FileProcessService.doFileProcess(FileProcessService.java:51)
+	at com.teachmeskills.final_assignment.run.Runner.main(Runner.java:8)
+
+[ERROR] ---> 2024.03.14 at 17:01:56:384 ---> com.teachmeskills.final_assignment.custom_exceptions.IsDirectoryEmptyException: C:\Users\Моргул\Desktop\qwe\invoices is empty.
+	at com.teachmeskills.final_assignment.util.validator.validations.DirectoryValidation.isDirectoryEmptyValidation(DirectoryValidation.java:42)
+	at com.teachmeskills.final_assignment.parser.InvoiceParser.sortInvoice(InvoiceParser.java:74)
+	at com.teachmeskills.final_assignment.parser.InvoiceParser.parseInvoiceInfo(InvoiceParser.java:34)
+	at com.teachmeskills.final_assignment.service.FileProcessService.doFileProcess(FileProcessService.java:52)
+	at com.teachmeskills.final_assignment.run.Runner.main(Runner.java:8)
+
+[ERROR] ---> 2024.03.14 at 17:01:56:386 ---> com.teachmeskills.final_assignment.custom_exceptions.OrdersFolderNotExistException: Orders folder doesn't exist
+	at com.teachmeskills.final_assignment.parser.OrderParser.findOrderFolder(OrderParser.java:57)
+	at com.teachmeskills.final_assignment.parser.OrderParser.parseOrderInfo(OrderParser.java:33)
+	at com.teachmeskills.final_assignment.service.FileProcessService.doFileProcess(FileProcessService.java:53)
+	at com.teachmeskills.final_assignment.run.Runner.main(Runner.java:8)
+

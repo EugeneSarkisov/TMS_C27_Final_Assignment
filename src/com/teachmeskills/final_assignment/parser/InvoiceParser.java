@@ -37,9 +37,11 @@ public class InvoiceParser {
             return 0.0;
         }
     }
+
     /**
      * findInvoiceFolder checks if folder invoices exist or not. Validation happened with
      * filtering files in package.
+     *
      * @param file - get the file from validator;
      * @return - if folder exist - return the file with package;
      * @throws InvoicesFolderNotExistException - if folder not exist;
@@ -60,6 +62,7 @@ public class InvoiceParser {
      * Collect all files from Invoices package into collection "invoices" and
      * sorting it while collection isn't empty. Garbage invoices moving to
      * the temp/garbageInvoices. Return the sort collection of invoices.
+     *
      * @param file all invoice files from package
      * @return invoices
      */
@@ -89,13 +92,14 @@ public class InvoiceParser {
      * bill string happening when reader find string with key-word "Total".
      * Next, all strings collect in invoiceDocList, from every string we get
      * value of order and summing it in invoiceSum.
+     *
      * @param invoiceList get the sort collection from sortOrder method.
      * @return invoiceSum - all necessary bills summing together.
      */
 
     private static double parseInvoiceInfo(List<File> invoiceList) {
         //check is our collection empty
-        if(invoiceList.isEmpty()){
+        if (invoiceList.isEmpty()) {
             Logger.loggerWrite(NO_VALUABLE_INVOICES);
             return 0;
         }

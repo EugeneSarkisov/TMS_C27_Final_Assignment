@@ -3,6 +3,7 @@ package com.teachmeskills.final_assignment.util.mover;
 /**
  * Uses for moving garbage files. Allow to replace same files.
  * Implement in sorting method of parsers.
+ *
  * @author EugeneSarkisov
  */
 
@@ -16,7 +17,6 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
 import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMessages.*;
-import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMessages.CHECK_THE_ERROR_LOG_MESSAGE;
 
 public class FileMover extends InvoiceParser {
 
@@ -26,7 +26,7 @@ public class FileMover extends InvoiceParser {
      * @param path - way for files where they need to be moved.
      */
 
-    public static void moveFile(File file, String path){
+    public static void moveFile(File file, String path) {
         try {
             Files.move(Paths.get(file.getPath()),
                     Paths.get(path + file.getName()),

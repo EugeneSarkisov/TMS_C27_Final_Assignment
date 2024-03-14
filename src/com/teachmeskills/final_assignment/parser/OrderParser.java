@@ -28,7 +28,7 @@ import static com.teachmeskills.final_assignment.util.consts.regex.Regex.ORDER_R
  * @author EugeneSarkisov
  */
 public class OrderParser {
-    public static double parseOrderInfo(File file){
+    public static double parseOrderInfo(File file) {
         try {
             return parseOrderInfo(sortOrders(findOrderFolder(file)));
         } catch (OrdersFolderNotExistException e) {
@@ -40,6 +40,7 @@ public class OrderParser {
     /**
      * findOrderFolder checks if folder orders exist or not. Validation happened with
      * filtering files in package.
+     *
      * @param file - get the file from validator;
      * @return - if folder exist - return the file with package;
      * @throws OrdersFolderNotExistException - if folder not exist;
@@ -61,6 +62,7 @@ public class OrderParser {
      * Collect all files from Order package into collection "orders" and
      * sorting it while collection isn't empty. Garbage orders moving to
      * the temp/garbageOrders. Return the sort collection of orders.
+     *
      * @param file all order files from package
      * @return orders
      */
@@ -81,7 +83,7 @@ public class OrderParser {
                 }
             }
             Logger.loggerWrite(REMOVING_COMPLETE_MESSAGE);
-        } catch (IsDirectoryEmptyException e){
+        } catch (IsDirectoryEmptyException e) {
             Logger.loggerWriteError(e);
         }
         return orders;
@@ -92,12 +94,13 @@ public class OrderParser {
      * bill string happening when reader find string with key-word "Total".
      * Next, all strings collect in orderBillList, from every string we get
      * value of order and summing it in orderSum.
+     *
      * @param orderList get the sort collection from sortOrder method.
      * @return orderSum - all necessary bills summing together.
      */
 
     private static double parseOrderInfo(List<File> orderList) {
-        if(orderList.isEmpty()){
+        if (orderList.isEmpty()) {
             Logger.loggerWrite(NO_VALUABLE_INVOICES);
             return 0;
         }
