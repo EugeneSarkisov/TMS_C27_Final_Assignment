@@ -1,5 +1,11 @@
 package com.teachmeskills.final_assignment.util.consts.messages;
 
+/**
+ * Contains constants of authorization messages for AuthorizationService
+ *
+ * @author KirillPalianitsa
+ */
+
 public interface AuthorizationMessages {
     String AUTHORIZATION_START_MESSAGE = "For authorization please enter your login and password: ";
     String LOGIN_MESSAGE = "Login: ";

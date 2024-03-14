@@ -26,7 +26,7 @@ public class FileProcessService {
             System.out.println(AUTHORIZATION_START_MESSAGE);
             System.out.print(LOGIN_MESSAGE);
             String login = scanner.next();
-            System.out.print(PASSWORD_MESSAGE);
+            System.out.println(PASSWORD_MESSAGE);
             String password = scanner.next();
             Session session = AuthorizationService.authorization(login, password);
             if (session != null && session.isSessionStillAlive()) {
@@ -41,7 +41,7 @@ public class FileProcessService {
                     Logger.loggerWrite(VALIDATION_ERROR_MESSAGE);
                 }
             } else {
-                Logger.loggerWrite(SESSION_NULL_MESSAGE);
+                System.out.println(SESSION_NULL_MESSAGE);
             }
         } catch (Exception e) {
             Logger.loggerWrite(SOMETHING_WENT_WRONG_MESSAGE);

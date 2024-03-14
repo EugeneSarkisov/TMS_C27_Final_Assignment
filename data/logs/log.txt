@@ -1,0 +1,45 @@
+[INFO] ---> 2024.03.13 at 23:58:03:902 ---> Getting login from storage.
+[INFO] ---> 2024.03.13 at 23:58:03:915 ---> Getting password from storage.
+[INFO] ---> 2024.03.13 at 23:58:03:915 ---> Checking the correctness of the entered data...
+[INFO] ---> 2024.03.14 at 00:06:56:349 ---> Getting login from storage.
+[INFO] ---> 2024.03.14 at 00:06:56:362 ---> Getting password from storage.
+[INFO] ---> 2024.03.14 at 00:06:56:362 ---> Checking the correctness of the entered data...
+[INFO] ---> 2024.03.14 at 00:13:52:675 ---> Getting login from storage.
+[INFO] ---> 2024.03.14 at 00:13:52:688 ---> Getting password from storage.
+[INFO] ---> 2024.03.14 at 00:13:52:688 ---> Checking the correctness of the entered data...
+[INFO] ---> 2024.03.14 at 00:13:57:680 ---> Validate folder...
+[INFO] ---> 2024.03.14 at 00:13:57:682 ---> else isn't exist. Please, check the error_log
+[INFO] ---> 2024.03.14 at 00:13:57:683 ---> Folder doesn't check the validation.
+[INFO] ---> 2024.03.14 at 00:14:10:79 ---> Getting login from storage.
+[INFO] ---> 2024.03.14 at 00:14:10:91 ---> Getting password from storage.
+[INFO] ---> 2024.03.14 at 00:14:10:92 ---> Checking the correctness of the entered data...
+[INFO] ---> 2024.03.14 at 00:23:02:67 ---> Getting login from storage.
+[INFO] ---> 2024.03.14 at 00:23:02:93 ---> Getting password from storage.
+[INFO] ---> 2024.03.14 at 00:23:02:93 ---> Checking the correctness of the entered data...
+[INFO] ---> 2024.03.14 at 12:44:12:154 ---> Getting login from storage.
+[INFO] ---> 2024.03.14 at 12:44:12:178 ---> Getting password from storage.
+[INFO] ---> 2024.03.14 at 12:44:12:179 ---> Checking the correctness of the entered data...
+[INFO] ---> 2024.03.14 at 12:44:32:381 ---> Validate folder...
+[INFO] ---> 2024.03.14 at 12:44:32:382 ---> Validation complete
+[INFO] ---> 2024.03.14 at 12:44:32:386 ---> Checking 'CHECKS' folder...
+[INFO] ---> 2024.03.14 at 12:44:32:388 ---> Getting access to the folder 'CHECKS'
+[INFO] ---> 2024.03.14 at 12:44:32:389 ---> Removing all unnecessary files
+[INFO] ---> 2024.03.14 at 12:44:32:391 ---> Removing complete
+[INFO] ---> 2024.03.14 at 12:44:32:391 ---> Parsing info from 'CHECKS'
+[INFO] ---> 2024.03.14 at 12:44:32:396 ---> Parsing complete. Summing all 'CHECKS' bills
+[INFO] ---> 2024.03.14 at 12:44:32:398 ---> Summing 'CHECKS' bills complete. Transfer information to report generator.
+[INFO] ---> 2024.03.14 at 12:44:32:400 ---> Checking 'INVOICES' folder...
+[INFO] ---> 2024.03.14 at 12:44:32:402 ---> Getting access to the folder 'INVOICE'
+[INFO] ---> 2024.03.14 at 12:44:32:403 ---> Removing all unnecessary files
+[INFO] ---> 2024.03.14 at 12:44:32:404 ---> Parsing info from 'INVOICE'
+[INFO] ---> 2024.03.14 at 12:44:32:409 ---> Parsing complete. Summing all 'INVOICE' bills
+[INFO] ---> 2024.03.14 at 12:44:32:413 ---> Summing 'INVOICES' bills complete. Transfer information to report generator.
+[INFO] ---> 2024.03.14 at 12:44:32:416 ---> Checking 'ORDERS' folder...
+[INFO] ---> 2024.03.14 at 12:44:32:418 ---> Getting access to the folder 'ORDERS'
+[INFO] ---> 2024.03.14 at 12:44:32:419 ---> Removing all unnecessary files
+[INFO] ---> 2024.03.14 at 12:44:32:424 ---> Removing complete
+[INFO] ---> 2024.03.14 at 12:44:32:425 ---> Parsing info from 'ORDERS'
+[INFO] ---> 2024.03.14 at 12:44:32:432 ---> Parsing complete. Summing all 'ORDERS' bills
+[INFO] ---> 2024.03.14 at 12:44:32:435 ---> Summing 'ORDERS' bills complete. Transfer information to report generator.
+[INFO] ---> 2024.03.14 at 12:44:32:438 ---> Generating report process...
+[INFO] ---> 2024.03.14 at 12:44:32:456 ---> Generating report complete.
