@@ -11,7 +11,7 @@ The final statistics is _uploaded to a separate file_.
    For **correct** operation of the programme it is necessary to correctly specify the correct path to the required documentation. The format of the document names must correspond to the specified format. Documents can be of 3 types: ***checks, invoices, orders.*** File name formats: ****1. YYYYY_Electric_Bill_00 (checks). 2. INVOICE_00_YYYYYY (invoices). 3. YYYYY_ORDER_00 (orders).****
 
  ### The program contains:
-- `FileProcessService` class that prompts the user for login information and folder path information.
+- `FileProcessService` implement all main logic of programm. Prompts the user for login information and folder path information. 
 
 - `AuthorisationService` class that gets information from "StorageMock", compares it with the console input and according to the result (matched / not matched) executes the appropriate logic. Session passes the returned item.
 
