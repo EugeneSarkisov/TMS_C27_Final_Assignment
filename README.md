@@ -2,7 +2,7 @@
 
 ### Task: 
 
-   Create a programme for _processing payment documents_ and _providing financial statements_. Access to the programme is by _login_ and password_.
+   Create a programme for _processing payment documents_ and _providing financial statements_. Access to the programme is by _login_ and _password_.
 The program receives the _path to the folder_ as input, reads information from the files and compiles _reports_ on them. The programme processes files only for a certain year. 
 The programme implements various checks as well as saving logs to separate files (errors and general information).
 When the programme finishes, _all invalid files should be moved to a separate folder_. Upon completion of the programme, _all invalid files are moved to a separate folder_.
@@ -23,7 +23,7 @@ The final statistics is _uploaded to a separate file_.
   
 - `Custom Exception` classes contain an _exception pattern_ for _checks, invoices, orders_ folders that do not exist. Also contain a _pattern of exception_ for folder which does not exist and a pattern for empty folder exception.
   
-- `Eencoder` class contains a method to _encode_ and _decode_ the user's _login_ and password_. It also contains a method `addSalt` for encrypting data.
+- `Eencoder` class contains a method to _encode_ and _decode_ the user's _login_ and _password_. It also contains a method `addSalt` for encrypting data.
 
 - `Validator` checking if folder _empty_ or _not exist_. Get the methods from  `DirectoryValidation` class. Which allow to check _is folder empty or is folder exist_.
 
