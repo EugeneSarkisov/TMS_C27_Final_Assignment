@@ -1,5 +1,10 @@
 package com.teachmeskills.final_assignment.authorization;
-//TODO write javadoc
+
+/**
+ * Uses the authentication method to authorise the user and give him access to the program
+ *
+ * @author KirillPalianitsa
+ */
 
 import com.teachmeskills.final_assignment.util.encoder.Encoder;
 import com.teachmeskills.final_assignment.util.logger.Logger;
@@ -8,7 +13,14 @@ import com.teachmeskills.final_assignment.util.storage.StorageMock;
 import static com.teachmeskills.final_assignment.util.consts.messages.AuthorizationMessages.*;
 
 public class AuthorizationService {
-
+    /**
+     * Accepts authorisation data as input.
+     * Checks the entered data against the data stored in memory.
+     * Gives the user access to the session
+     * @param login - user login
+     * @param password - user password
+     * @return running session
+     */
     public static Session authorization(String login, String password){
         StorageMock storage = new StorageMock();
         Logger.loggerWrite(GETTING_LOGIN_MESSAGE);
@@ -19,9 +31,10 @@ public class AuthorizationService {
         String decodedLogin = Encoder.decode(loginFromStorage);
         String decodedPassword = Encoder.decode(passwordFromStorage);
         if(login.toLowerCase().equals(decodedLogin) && password.equals(decodedPassword)){
+            System.out.println("Access granted. Please enter path to the folder: ");
             return new Session();
         }else {
-            System.err.println(LOGIN_PASSWORD_INCORRECT_MESSAGE);
+            System.err.println("Login or password is incorrect. Please try again.");
             return null;
         }
     }

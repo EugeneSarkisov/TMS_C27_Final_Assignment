@@ -1,5 +1,11 @@
 package com.teachmeskills.final_assignment.generator;
 
+/**
+ * Uses the report method for creating report information on the results of programme execution
+ *
+ * @author KirillPalianitsa
+ */
+
 import com.teachmeskills.final_assignment.util.consts.path.Path;
 import com.teachmeskills.final_assignment.util.date_sample.DateAndTime;
 import com.teachmeskills.final_assignment.util.logger.Logger;
@@ -13,6 +19,9 @@ import static com.teachmeskills.final_assignment.util.consts.messages.GeneratorM
 import static com.teachmeskills.final_assignment.util.consts.messages.ProgramMessages.END_PROGRAM_MESSAGE;
 import static com.teachmeskills.final_assignment.util.consts.messages.UserLogMessages.SOMETHING_WENT_WRONG_MESSAGE;
 
+/**
+ * Takes data from parsers as input, calculates the total and generates a report in a separate folder
+ */
 public class ReportGenerator {
     public static void report(double checkSum, double invoiceSum, double orderSum) {
         try (Writer output = new FileWriter(Path.PATH_TO_REPORT)) {

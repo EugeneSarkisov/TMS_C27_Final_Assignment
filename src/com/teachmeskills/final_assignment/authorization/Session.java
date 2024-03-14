@@ -1,6 +1,10 @@
 package com.teachmeskills.final_assignment.authorization;
 
-//TODO write javadoc
+/**
+ *
+ *
+ * @author
+ */
 
 
 import java.util.Calendar;
